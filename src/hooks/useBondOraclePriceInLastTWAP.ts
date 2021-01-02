@@ -8,7 +8,7 @@ const useBondOraclePriceInLastTWAP = () => {
   const basisCash = useBasisCash();
 
   const fetchCashPrice = useCallback(async () => {
-    setPrice(await basisCash.getBondOraclePriceInLastTWAP());
+    basisCash && setPrice(await basisCash.getBondOraclePriceInLastTWAP());
   }, [basisCash]);
 
   useEffect(() => {
