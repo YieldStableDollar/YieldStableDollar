@@ -263,21 +263,6 @@ export class BasisCash {
   }
 
   async fetchBoardroomVersionOfUser(): Promise<string> {
-    const { Boardroom1, Boardroom2 } = this.contracts;
-    const balance1 = await Boardroom1.getShareOf(this.myAccount);
-    if (balance1.gt(0)) {
-      console.log(
-        `👀 The user is using Boardroom v1. (Staked ${getDisplayBalance(balance1)} BAS)`,
-      );
-      return 'v1';
-    }
-    const balance2 = await Boardroom2.balanceOf(this.myAccount);
-    if (balance2.gt(0)) {
-      console.log(
-        `👀 The user is using Boardroom v2. (Staked ${getDisplayBalance(balance2)} BAS)`,
-      );
-      return 'v2';
-    }
     return 'latest';
   }
 
