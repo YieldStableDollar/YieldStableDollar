@@ -25,7 +25,7 @@ const Banks: React.FC = () => {
             titleLeft={PickaBank}
             titleRight={line}
             title="Pick a Bank."
-            subtitle="Earn Basis Shares by providing liquidity"
+            subtitle="Earn Yield Stable Shares by providing liquidity"
           />
           {!!account ? (
             <BankCards />

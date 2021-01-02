@@ -88,7 +88,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     sort: 7,
   },
   DAIBACLPTokenSharePool: {
-    name: 'Earn BAS by BAC-DAI-LP',
+    name: 'Earn YSD by BAC-DAI-LP',
     contract: 'DAIBACLPTokenSharePool',
     depositTokenName: 'BAC_DAI-UNI-LPv2',
     earnTokenName: 'BAS',
@@ -96,7 +96,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     sort: 1,
   },
   DAIBASLPTokenSharePool: {
-    name: 'Earn BAS by BAS-DAI-LP',
+    name: 'Earn YSD by BAS-DAI-LP',
     contract: 'DAIBASLPTokenSharePool',
     depositTokenName: 'BAS_DAI-UNI-LPv2',
     earnTokenName: 'BAS',

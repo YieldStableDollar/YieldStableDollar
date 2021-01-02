@@ -67,7 +67,7 @@ const Bond: React.FC = () => {
           />
           <LaunchCountdown
             deadline={config.bondLaunchesAt}
-            description="How does Basis bond work?"
+            description="How does Yield Stable bond work?"
             descriptionLink="https://docs.basis.cash/mechanisms/stabilization-mechanism"
           />
         </Page>
@@ -93,16 +93,16 @@ const Bond: React.FC = () => {
                 <ExchangeCard
                   action="Purchase"
                   fromToken={basisCash.BAC}
-                  fromTokenName="Basis Cash"
+                  fromTokenName="Yield Stable Dollar"
                   toToken={basisCash.BAB}
-                  toTokenName="Basis Bond"
+                  toTokenName="Yield Stable Bond"
                   priceDesc={
                     cashIsOverpriced
-                      ? 'BAC is over $1'
+                      ? 'YSD is over $1'
                       : cashIsUnderPriced
                       ? `${Math.floor(
                           100 / Number(bondStat.priceInDAI) - 100,
-                        )}% return when BAC > $1`
+                        )}% return when YSD > $1`
                       : '-'
                   }
                   onExchange={handleBuyBonds}
@@ -111,14 +111,14 @@ const Bond: React.FC = () => {
               </StyledCardWrapper>
               <StyledStatsWrapper>
                 <ExchangeStat
-                  tokenName="BAC"
+                  tokenName="YSC"
                   description="Base Price (Last-Day TWAP)"
                   price={getDisplayBalance(cashPrice, 18, 2)}
                 />
                 <Spacer size="md" />
                 <ExchangeStat
-                  tokenName="BAB"
-                  description="Current Price: (BAC)^2"
+                  tokenName="YSB"
+                  description="Current Price: (YSD)^2"
                   price={bondStat?.priceInDAI || '-'}
                 />
               </StyledStatsWrapper>
@@ -126,10 +126,10 @@ const Bond: React.FC = () => {
                 <ExchangeCard
                   action="Redeem"
                   fromToken={basisCash.BAB}
-                  fromTokenName="Basis Bond"
+                  fromTokenName="Yield Stable Bond"
                   toToken={basisCash.BAC}
-                  toTokenName="Basis Cash"
-                  priceDesc={`${getDisplayBalance(bondBalance)} BAB Available`}
+                  toTokenName="Yield Stable Dollar"
+                  priceDesc={`${getDisplayBalance(bondBalance)} YSB Available`}
                   onExchange={handleRedeemBonds}
                   disabled={!bondStat || bondBalance.eq(0) || cashIsUnderPriced}
                 />

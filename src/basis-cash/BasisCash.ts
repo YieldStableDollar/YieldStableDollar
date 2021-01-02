@@ -11,7 +11,7 @@ import IUniswapV2PairABI from './IUniswapV2Pair.abi.json';
 import { parseUnits } from 'ethers/lib/utils';
 
 /**
- * An API module of Basis Cash contracts.
+ * An API module of Yield Stable Dollar contracts.
  * All contract-interacting domain logic should be defined in here.
  */
 export class BasisCash {
@@ -95,7 +95,7 @@ export class BasisCash {
   }
 
   /**
-   * @returns Basis Cash (BAC) stats from Uniswap.
+   * @returns Yield Stable Dollar (BAC) stats from Uniswap.
    * It may differ from the BAC price used on Treasury (which is calculated in TWAP)
    */
   async getCashStatFromUniswap(): Promise<TokenStat> {
@@ -107,7 +107,7 @@ export class BasisCash {
   }
 
   /**
-   * @returns Estimated Basis Cash (BAC) price data,
+   * @returns Estimated Yield Stable Dollar (BAC) price data,
    * calculated by 1-day Time-Weight Averaged Price (TWAP).
    */
   async getCashStatInEstimatedTWAP(): Promise<TokenStat> {
