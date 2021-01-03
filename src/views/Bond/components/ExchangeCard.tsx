@@ -2,8 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Button from '../../../components/Button';
-import Card from '../../../components/Card';
-import CardContent from '../../../components/CardContent';
 import useBasisCash from '../../../hooks/useBasisCash';
 import Label from '../../../components/Label';
 import TokenSymbol from '../../../components/TokenSymbol';
@@ -82,8 +80,8 @@ const ExchangeCard: React.FC<ExchangeCardProps> = ({
         {approveStatus !== ApprovalState.APPROVED && !disabled ? (
           <Button
             disabled={
-              approveStatus == ApprovalState.PENDING ||
-              approveStatus == ApprovalState.UNKNOWN
+              approveStatus === ApprovalState.PENDING ||
+              approveStatus === ApprovalState.UNKNOWN
             }
             size="sm"
             onClick={() => catchError(approve(), `Unable to approve ${fromTokenName}`)}

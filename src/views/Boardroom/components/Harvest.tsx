@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import Button from '../../../components/Button';
 import TokenSymbol from '../../../components/TokenSymbol';
-import Card from '../../../components/Card';
 import CardContent from '../../../components/CardContent';
 import Label from '../../../components/Label';
 import Value from '../../../components/Value';
@@ -14,7 +13,7 @@ import { getDisplayBalance } from '../../../utils/formatBalance';
 import buttonB from '../../../assets/img/buttonB.png';
 import pad from '../../../assets/img/pad.png';
 
-const Harvest: React.FC = ({}) => {
+const Harvest: React.FC = () => {
   const { onReward } = useHarvestFromBoardroom();
   const earnings = useEarningsOnBoardroom();
 
@@ -49,11 +48,6 @@ const StyledCardActions = styled.div`
   background-image: url(${buttonB});
   background-repeat : no-repeat;
   background-size: 100% 100%;
-`;
-
-const StyledSpacer = styled.div`
-  height: ${(props) => props.theme.spacing[4]}px;
-  width: ${(props) => props.theme.spacing[4]}px;
 `;
 
 const StyledCardContentInner = styled.div`

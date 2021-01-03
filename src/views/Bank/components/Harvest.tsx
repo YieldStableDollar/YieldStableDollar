@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Contract } from 'ethers';
-
 import Button from '../../../components/Button';
 import Card from '../../../components/Card';
 import CardContent from '../../../components/CardContent';
@@ -56,11 +54,6 @@ const StyledCardActions = styled.div`
   justify-content: center;
   margin-top: ${(props) => props.theme.spacing[6]}px;
   width: 100%;
-`;
-
-const StyledSpacer = styled.div`
-  height: ${(props) => props.theme.spacing[4]}px;
-  width: ${(props) => props.theme.spacing[4]}px;
 `;
 
 const StyledCardContentInner = styled.div`

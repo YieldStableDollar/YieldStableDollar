@@ -1,10 +1,8 @@
-import React, { useCallback, useContext } from 'react';
-import { AlertCircle, CheckCircle } from 'react-feather';
-import styled, { ThemeContext } from 'styled-components';
+import React, { useCallback } from 'react';
+import { AlertCircle } from 'react-feather';
+import styled from 'styled-components';
 import { AutoColumn } from '../Column';
 import { AutoRow } from '../Row';
-import { useWallet } from 'use-wallet';
-import config from '../../config';
 
 const RowNoFlex = styled(AutoRow)`
   flex-wrap: nowrap;

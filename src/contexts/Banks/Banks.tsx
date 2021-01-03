@@ -8,8 +8,11 @@ const Banks: React.FC = ({ children }) => {
   const [banks, setBanks] = useState<Bank[]>([]);
   const basisCash = useBasisCash();
 
+  const basicCashIsUnlocked = basisCash?.isUnlocked
+
   const fetchPools = useCallback(async () => {
     const banks: Bank[] = [];
+
 
     for (const bankInfo of Object.values(bankDefinitions)) {
       if (bankInfo.finished) {
@@ -25,19 +28,19 @@ const Banks: React.FC = ({ children }) => {
         ...bankInfo,
         address: config.deployments[bankInfo.contract].address,
         depositToken: basisCash.externalTokens[bankInfo.depositTokenName],
-        earnToken: bankInfo.earnTokenName == 'BAC' ? basisCash.BAC : basisCash.BAS,
+        earnToken: bankInfo.earnTokenName === 'BAC' ? basisCash.BAC : basisCash.BAS,
       });
     }
     banks.sort((a, b) => (a.sort > b.sort ? 1 : -1));
     setBanks(banks);
-  }, [basisCash, basisCash?.isUnlocked, setBanks]);
+  }, [basisCash, setBanks]);
 
   useEffect(() => {
     if (basisCash) {
       fetchPools()
         .catch(err => console.error(`Failed to fetch pools: ${err.stack}`));
     }
-  }, [basisCash, basisCash?.isUnlocked, fetchPools]);
+  }, [basisCash, basicCashIsUnlocked, fetchPools]);
 
   return <Context.Provider value={{ banks }}>{children}</Context.Provider>;
 };
