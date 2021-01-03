@@ -77,8 +77,8 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
             {approveStatus !== ApprovalState.APPROVED ? (
               <Button
                 disabled={
-                  approveStatus == ApprovalState.PENDING ||
-                  approveStatus == ApprovalState.UNKNOWN
+                  approveStatus === ApprovalState.PENDING ||
+                  approveStatus === ApprovalState.UNKNOWN
                 }
                 onClick={approve}
                 text={`Approve ${bank.depositTokenName}`}
