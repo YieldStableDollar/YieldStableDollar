@@ -12,13 +12,13 @@ import TokenSymbol from '../../TokenSymbol';
 const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
   const basisCash = useBasisCash();
 
-  const bacBalance = useTokenBalance(basisCash.BAC);
+  const bacBalance = useTokenBalance(basisCash.YSD);
   const displayBacBalance = useMemo(() => getDisplayBalance(bacBalance), [bacBalance]);
 
-  const basBalance = useTokenBalance(basisCash.BAS);
+  const basBalance = useTokenBalance(basisCash.YSS);
   const displayBasBalance = useMemo(() => getDisplayBalance(basBalance), [basBalance]);
 
-  const babBalance = useTokenBalance(basisCash.BAB);
+  const babBalance = useTokenBalance(basisCash.YSB);
   const displayBabBalance = useMemo(() => getDisplayBalance(babBalance), [babBalance]);
 
   return (
@@ -27,26 +27,26 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
 
       <Balances>
         <StyledBalanceWrapper>
-          <TokenSymbol symbol="BAC" />
+          <TokenSymbol symbol="YSD" />
           <StyledBalance>
             <StyledValue>{displayBacBalance}</StyledValue>
-            <Label text="BAC Available" />
+            <Label text="YSD Available" />
           </StyledBalance>
         </StyledBalanceWrapper>
 
         <StyledBalanceWrapper>
-          <TokenSymbol symbol="BAS" />
+          <TokenSymbol symbol="YSS" />
           <StyledBalance>
             <StyledValue>{displayBasBalance}</StyledValue>
-            <Label text="BAS Available" />
+            <Label text="YSS Available" />
           </StyledBalance>
         </StyledBalanceWrapper>
 
         <StyledBalanceWrapper>
-          <TokenSymbol symbol="BAB" />
+          <TokenSymbol symbol="YSB" />
           <StyledBalance>
             <StyledValue>{displayBabBalance}</StyledValue>
-            <Label text="BAB Available" />
+            <Label text="YSB Available" />
           </StyledBalance>
         </StyledBalanceWrapper>
       </Balances>

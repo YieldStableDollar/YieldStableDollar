@@ -23,7 +23,7 @@ const Harvest: React.FC<HarvestProps> = ({ bank }) => {
   const earnings = useEarnings(bank.contract);
   const { onReward } = useHarvest(bank);
 
-  const tokenName = bank.earnTokenName === 'BAS' ? 'Share' : 'Cash';
+  const tokenName = bank.earnTokenName === 'YSS' ? 'Share' : 'Cash';
   return (
     <Card>
       <CardContent>

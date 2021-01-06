@@ -31,7 +31,7 @@ const Bond: React.FC = () => {
   const bondStat = useBondStats();
   const cashPrice = useBondOraclePriceInLastTWAP();
 
-  const bondBalance = useTokenBalance(basisCash?.BAB);
+  const bondBalance = useTokenBalance(basisCash?.YSB);
 
   const handleBuyBonds = useCallback(
     async (amount: string) => {
@@ -39,7 +39,7 @@ const Bond: React.FC = () => {
         const tx = await basisCash.buyBonds(amount, cashPrice);
         const bondAmount = Number(amount) / Number(getDisplayBalance(cashPrice));
         addTransaction(tx, {
-          summary: `Buy ${bondAmount.toFixed(2)} BAB with ${amount} BAC`,
+          summary: `Buy ${bondAmount.toFixed(2)} YSB with ${amount} YSD`,
         });
       } catch (error) {
         alert("Error happened when buyBonds, reason: " + error.reason)
@@ -52,7 +52,7 @@ const Bond: React.FC = () => {
     async (amount: string) => {
       try {
         const tx = await basisCash.redeemBonds(amount, cashPrice);
-        addTransaction(tx, { summary: `Redeem ${amount} BAB` });
+        addTransaction(tx, { summary: `Redeem ${amount} YSB` });
       } catch (error) {
         alert("Error happened when buyBonds, reason: " + error.reason)
       }
@@ -101,9 +101,9 @@ const Bond: React.FC = () => {
               <StyledCardWrapper>
                 <ExchangeCard
                   action="Purchase"
-                  fromToken={basisCash.BAC}
+                  fromToken={basisCash.YSD}
                   fromTokenName="Yield Stable Dollar"
-                  toToken={basisCash.BAB}
+                  toToken={basisCash.YSB}
                   toTokenName="Yield Stable Bond"
                   priceDesc={
                     cashIsOverpriced
@@ -134,9 +134,9 @@ const Bond: React.FC = () => {
               <StyledCardWrapper>
                 <ExchangeCard
                   action="Redeem"
-                  fromToken={basisCash.BAB}
+                  fromToken={basisCash.YSB}
                   fromTokenName="Yield Stable Bond"
-                  toToken={basisCash.BAC}
+                  toToken={basisCash.YSD}
                   toTokenName="Yield Stable Dollar"
                   priceDesc={`${getDisplayBalance(bondBalance)} YSB Available`}
                   onExchange={handleRedeemBonds}

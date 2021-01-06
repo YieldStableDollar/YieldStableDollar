@@ -69,7 +69,7 @@ const LPTokenHelpText: React.FC<{ bank: BankEntity }> = ({ bank }) => {
   let swapPrefix = 'https://app.unisave.exchange/#'
   let uniswapUrl: string;
   const { Cash, Share } = Config.deployments;
-  if (bank.depositTokenName.includes('BAC')) {
+  if (bank.depositTokenName.includes('YSD')) {
       pairName = 'YSD-DAI pair';
       uniswapUrl = `${swapPrefix}/add/${Cash.address}/${Config.externalTokens.DAI[0]}`;
     } else {

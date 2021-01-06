@@ -23,9 +23,9 @@ export class BasisCash {
   boardroomVersionOfUser?: string;
 
   bacDai: Contract;
-  BAC: ERC20;
-  BAS: ERC20;
-  BAB: ERC20;
+  YSD: ERC20;
+  YSS: ERC20;
+  YSB: ERC20;
 
   constructor(cfg: Configuration) {
     const { deployments, externalTokens } = cfg;
@@ -40,13 +40,13 @@ export class BasisCash {
     for (const [symbol, [address, decimal]] of Object.entries(externalTokens)) {
       this.externalTokens[symbol] = new ERC20(address, provider, symbol, decimal); // TODO: add decimal
     }
-    this.BAC = new ERC20(deployments.Cash.address, provider, 'BAC');
-    this.BAS = new ERC20(deployments.Share.address, provider, 'BAS');
-    this.BAB = new ERC20(deployments.Bond.address, provider, 'BAB');
+    this.YSD = new ERC20(deployments.Cash.address, provider, 'YSD');
+    this.YSS = new ERC20(deployments.Share.address, provider, 'YSS');
+    this.YSB = new ERC20(deployments.Bond.address, provider, 'YSB');
 
     // Uniswap V2 Pair
     this.bacDai = new Contract(
-      externalTokens['BAC_DAI-UNI-LPv2'][0],
+      externalTokens['YSD_DAI-UNI-LPv2'][0],
       IUniswapV2PairABI,
       provider,
     );
@@ -67,7 +67,7 @@ export class BasisCash {
     for (const [name, contract] of Object.entries(this.contracts)) {
       this.contracts[name] = contract.connect(this.signer);
     }
-    const tokens = [this.BAC, this.BAS, this.BAB, ...Object.values(this.externalTokens)];
+    const tokens = [this.YSD, this.YSS, this.YSB, ...Object.values(this.externalTokens)];
     for (const token of tokens) {
       token.connect(this.signer);
     }
@@ -95,12 +95,12 @@ export class BasisCash {
 
   /**
    * @returns Yield Stable Dollar (YSD) stats from Uniswap.
-   * It may differ from the BAC price used on Treasury (which is calculated in TWAP)
+   * It may differ from the YSD price used on Treasury (which is calculated in TWAP)
    */
   async getCashStatFromUniswap(): Promise<TokenStat> {
-    const supply = await this.BAC.displayedTotalSupply();
+    const supply = await this.YSD.displayedTotalSupply();
     return {
-      priceInDAI: await this.getTokenPriceFromUniswap(this.BAC),
+      priceInDAI: await this.getTokenPriceFromUniswap(this.YSD),
       totalSupply: supply,
     };
   }
@@ -125,7 +125,7 @@ export class BasisCash {
       .div(elapsedSec)
       .div(denominator112);
 
-    const totalSupply = await this.BAC.displayedTotalSupply();
+    const totalSupply = await this.YSD.displayedTotalSupply();
     return {
       priceInDAI: getDisplayBalance(cashPriceTWAP),
       totalSupply,
@@ -150,14 +150,14 @@ export class BasisCash {
 
     return {
       priceInDAI: getDisplayBalance(bondPrice),
-      totalSupply: await this.BAB.displayedTotalSupply(),
+      totalSupply: await this.YSB.displayedTotalSupply(),
     };
   }
 
   async getShareStat(): Promise<TokenStat> {
     return {
-      priceInDAI: await this.getTokenPriceFromUniswap(this.BAS),
-      totalSupply: await this.BAS.displayedTotalSupply(),
+      priceInDAI: await this.getTokenPriceFromUniswap(this.YSS),
+      totalSupply: await this.YSS.displayedTotalSupply(),
     };
   }
 
@@ -303,14 +303,14 @@ export class BasisCash {
     const balance1 = await Boardroom1.getShareOf(this.myAccount);
     if (balance1.gt(0)) {
       console.log(
-        `👀 The user is using Boardroom v1. (Staked ${getDisplayBalance(balance1)} BAS)`,
+        `👀 The user is using Boardroom v1. (Staked ${getDisplayBalance(balance1)} YSS)`,
       );
       return 'v1';
     }
     const balance2 = await Boardroom2.balanceOf(this.myAccount);
     if (balance2.gt(0)) {
       console.log(
-        `👀 The user is using Boardroom v2. (Staked ${getDisplayBalance(balance2)} BAS)`,
+        `👀 The user is using Boardroom v2. (Staked ${getDisplayBalance(balance2)} YSS)`,
       );
       return 'v2';
     }
@@ -341,7 +341,7 @@ export class BasisCash {
 
   async stakeShareToBoardroom(amount: string): Promise<TransactionResponse> {
     if (this.isOldBoardroomMember()) {
-      throw new Error("you're using old Boardroom. please withdraw and deposit the BAS again.");
+      throw new Error("you're using old Boardroom. please withdraw and deposit the YSS again.");
     }
     const Boardroom = this.currentBoardroom();
     return await Boardroom.stake(decimalToBalance(amount));

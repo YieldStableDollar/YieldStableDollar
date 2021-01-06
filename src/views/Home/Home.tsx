@@ -31,11 +31,11 @@ const Home: React.FC = () => {
     if (basisCash) {
       fetchStats().catch((err) => console.error(err.stack));
     }
-  }, [basisCash]);
+  }, [basisCash, fetchStats]);
 
-  const cashAddr = useMemo(() => basisCash?.BAC.address, [basisCash]);
-  const shareAddr = useMemo(() => basisCash?.BAS.address, [basisCash]);
-  const bondAddr = useMemo(() => basisCash?.BAB.address, [basisCash]);
+  const cashAddr = useMemo(() => basisCash?.YSD.address, [basisCash]);
+  const shareAddr = useMemo(() => basisCash?.YSS.address, [basisCash]);
+  const bondAddr = useMemo(() => basisCash?.YSB.address, [basisCash]);
 
   return (
     <Page>
@@ -50,7 +50,7 @@ const Home: React.FC = () => {
       <CardWrapper>
         <HomeCard
           title="YSD"
-          symbol="BAC"
+          symbol="YSD"
           color="rgba(72, 225, 159, 0.5)"
           supplyLabel="Circulating Supply"
           address={cashAddr}
@@ -59,7 +59,7 @@ const Home: React.FC = () => {
         <Spacer size="lg" />
         <HomeCard
           title="YSS"
-          symbol="BAB"
+          symbol="YSB"
           color="rgba(72, 225, 159, 0.5)"
           address={shareAddr}
           stat={share}
@@ -67,7 +67,7 @@ const Home: React.FC = () => {
         <Spacer size="lg" />
         <HomeCard
           title="YSB"
-          symbol="BAS"
+          symbol="YSS"
           color="rgba(72, 225, 159, 0.5)"
           address={bondAddr}
           stat={bond}
