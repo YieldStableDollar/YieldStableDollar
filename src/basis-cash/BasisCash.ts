@@ -1,7 +1,7 @@
 import { Fetcher, Route, Token } from '@lychees/uniscam-sdk';
 import { Configuration } from './config';
 import { ContractName, TokenStat, TreasuryAllocationTime } from './types';
-import { BigNumber, Contract, ethers, Overrides } from 'ethers';
+import { BigNumber, Contract, ethers, Overrides, utils } from 'ethers';
 import { decimalToBalance } from './ether-utils';
 import { TransactionResponse } from '@ethersproject/providers';
 import ERC20 from './ERC20';
@@ -94,7 +94,7 @@ export class BasisCash {
   }
 
   /**
-   * @returns Yield Stable Dollar (BAC) stats from Uniswap.
+   * @returns Yield Stable Dollar (YSD) stats from Uniswap.
    * It may differ from the BAC price used on Treasury (which is calculated in TWAP)
    */
   async getCashStatFromUniswap(): Promise<TokenStat> {
@@ -106,7 +106,7 @@ export class BasisCash {
   }
 
   /**
-   * @returns Estimated Yield Stable Dollar (BAC) price data,
+   * @returns Estimated Yield Stable Dollar (YSD) price data,
    * calculated by 1-day Time-Weight Averaged Price (TWAP).
    */
   async getCashStatInEstimatedTWAP(): Promise<TokenStat> {
@@ -182,18 +182,42 @@ export class BasisCash {
    * Buy bonds with cash.
    * @param amount amount of cash to purchase bonds with.
    */
-  async buyBonds(amount: string | number): Promise<TransactionResponse> {
+  async buyBonds(amount: string | number, cashPrice: BigNumber): Promise<TransactionResponse> {
     const { Treasury } = this.contracts;
-    return await Treasury.buyBonds(decimalToBalance(amount));
+    console.log(`Buy ${amount} bonds for cashPrice: ${utils.formatUnits(cashPrice)}`);
+    try {
+      const res = await Treasury.buyBonds(decimalToBalance(amount), cashPrice);
+      return res;
+    } catch (error) {
+      await Treasury.callStatic
+        .buyBonds(decimalToBalance(amount), cashPrice)
+        .catch((callError) => {
+          console.error('Error happened when buyBonds, reason: ', callError.reason);
+          throw callError;
+          // if (callError.reason) throw new Error(callError.reason);
+          // else throw new Error('Unknown error, please contact devs ASAP');
+        });
+    }
   }
 
   /**
    * Redeem bonds for cash.
    * @param amount amount of bonds to redeem.
    */
-  async redeemBonds(amount: string): Promise<TransactionResponse> {
+  async redeemBonds(amount: string, targetPrice: BigNumber): Promise<TransactionResponse> {
     const { Treasury } = this.contracts;
-    return await Treasury.redeemBonds(decimalToBalance(amount));
+    try {
+      const res = await Treasury.redeemBonds(decimalToBalance(amount), targetPrice);
+      return res;
+    } catch (error) {
+      await Treasury.callStatic
+        .redeemBonds(decimalToBalance(amount), targetPrice)
+        .catch((callError) => {
+          console.error('redeemBonds::callError::reason', callError.reason);
+          console.error('redeemBonds::callError', callError);
+          throw callError;
+        });
+    }
   }
 
   async earnedFromBank(poolName: ContractName, account = this.myAccount): Promise<BigNumber> {
@@ -211,8 +235,12 @@ export class BasisCash {
     account = this.myAccount,
   ): Promise<BigNumber> {
     const pool = this.contracts[poolName];
+    console.info('stakedBalanceOnBank::pool', pool);
+    console.info('stakedBalanceOnBank::account', account);
     try {
-      return await pool.balanceOf(account);
+      const balance = await pool.balanceOf(account);
+      console.info(`stakedBalanceOnBank::balance for ${account} is ${balance}`);
+      return balance;
     } catch (err) {
       console.error(`Failed to call balanceOf() on pool ${pool.address}: ${err.stack}`);
       return BigNumber.from(0);
@@ -227,8 +255,17 @@ export class BasisCash {
    */
   async stake(poolName: ContractName, amount: BigNumber): Promise<TransactionResponse> {
     const pool = this.contracts[poolName];
-    const gas = await pool.estimateGas.stake(amount);
-    return await pool.stake(amount, this.gasOptions(gas));
+    console.info('pool', pool);
+    try {
+      const gas = await pool.estimateGas.stake(amount);
+      console.info('estimateGas', gas);
+      return await pool.stake(amount, this.gasOptions(gas));
+    } catch (error) {
+      pool.callStatic.stake(amount).then((callError) => {
+        console.error('Error while staking, reason:' + callError.reason);
+        throw callError;
+      });
+    }
   }
 
   /**
@@ -262,17 +299,33 @@ export class BasisCash {
   }
 
   async fetchBoardroomVersionOfUser(): Promise<string> {
+    const { Boardroom1, Boardroom2 } = this.contracts;
+    const balance1 = await Boardroom1.getShareOf(this.myAccount);
+    if (balance1.gt(0)) {
+      console.log(
+        `👀 The user is using Boardroom v1. (Staked ${getDisplayBalance(balance1)} BAS)`,
+      );
+      return 'v1';
+    }
+    const balance2 = await Boardroom2.balanceOf(this.myAccount);
+    if (balance2.gt(0)) {
+      console.log(
+        `👀 The user is using Boardroom v2. (Staked ${getDisplayBalance(balance2)} BAS)`,
+      );
+      return 'v2';
+    }
     return 'latest';
   }
 
   boardroomByVersion(version: string): Contract {
-    if (version === 'v1') {
-      return this.contracts.Boardroom1;
-    }
-    if (version === 'v2') {
-      return this.contracts.Boardroom2;
-    }
-    return this.contracts.Boardroom3;
+    // if (version === 'v1') {
+    //   return this.contracts.Boardroom1;
+    // }
+    // if (version === 'v2') {
+    //   return this.contracts.Boardroom2;
+    // }
+    // return this.contracts.Boardroom3;
+    return this.contracts.Boardroom;
   }
 
   currentBoardroom(): Contract {
