@@ -129,13 +129,6 @@ const StyledCards = styled.div`
   }
 `;
 
-const StyledLoadingWrapper = styled.div`
-  align-items: center;
-  display: flex;
-  flex: 1;
-  justify-content: center;
-`;
-
 const StyledRow = styled.div`
   display: flex;
   justify-content: center;

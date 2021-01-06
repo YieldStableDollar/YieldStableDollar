@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import useBasisCash from './useBasisCash';
-import config from '../config';
 import { TreasuryAllocationTime } from '../basis-cash/types';
 
 const useTreasuryAllocationTimes = () => {

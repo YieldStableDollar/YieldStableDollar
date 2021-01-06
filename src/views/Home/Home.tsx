@@ -7,7 +7,6 @@ import HomeCard from './components/HomeCard';
 import { OverviewData } from './types';
 import useBasisCash from '../../hooks/useBasisCash';
 import config from '../../config';
-import Notice from '../../components/Notice';
 import cyberchip from '../../assets/img/cyberchip.png';
 import WelcometoYSD from '../../assets/img/WelcometoYSD.png';
 import line from '../../assets/img/line.png';
@@ -78,16 +77,6 @@ const Home: React.FC = () => {
   );
 };
 
-const StyledOverview = styled.div`
-  align-items: center;
-  display: flex;
-  @media (max-width: 768px) {
-    width: 100%;
-    flex-flow: column nowrap;
-    align-items: center;
-  }
-`;
-
 const CardWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -98,22 +87,6 @@ const CardWrapper = styled.div`
     flex-flow: column nowrap;
     align-items: center;
   }
-`;
-
-const StyledNoticeContainer = styled.div`
-  max-width: 768px;
-  width: 90vw;
-`;
-
-const StyledSpacer = styled.div`
-  height: ${(props) => props.theme.spacing[4]}px;
-  width: ${(props) => props.theme.spacing[4]}px;
-`;
-
-const StyledLink = styled.a`
-  font-weight: 700;
-  text-decoration: none;
-  color: ${(props) => props.theme.color.primary.main};
 `;
 
 export default Home;
