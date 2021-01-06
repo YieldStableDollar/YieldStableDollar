@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import { useParams } from 'react-router-dom';
 import { useWallet } from 'use-wallet';
+import Config from "../../config";
 
 import Button from '../../components/Button';
 import PageHeader from '../../components/PageHeader';
@@ -65,13 +66,15 @@ const Bank: React.FC = () => {
 
 const LPTokenHelpText: React.FC<{ bank: BankEntity }> = ({ bank }) => {
   let pairName: string;
+  let swapPrefix = 'https://app.unisave.exchange/#'
   let uniswapUrl: string;
+  const { Cash, Share } = Config.deployments;
   if (bank.depositTokenName.includes('BAC')) {
-    pairName = 'BAC-DAI pair';
-    uniswapUrl = 'https://app.unisave.exchange/#/add/0x72b5b52ab3a78b86c7ad32960cb0fc253af4a154/0xde76ccae3413c7af312251e99803b1433d3187f4';
-  } else {
-    pairName = 'BAS-DAI pair';
-    uniswapUrl = 'https://app.unisave.exchange/#/add/0x01b0ef17faf5dc7d54a9ec76032c26bb13586728/0xde76ccae3413c7af312251e99803b1433d3187f4';
+      pairName = 'YSD-DAI pair';
+      uniswapUrl = `${swapPrefix}/add/${Cash.address}/${Config.externalTokens.DAI[0]}`;
+    } else {
+      pairName = 'YSS-DAI pair';
+      uniswapUrl = `${swapPrefix}/add/${Share.address}/${Config.externalTokens.DAI[0]}`;
   }
   return (
     <StyledLink href={uniswapUrl} target="_blank">
