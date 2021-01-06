@@ -4,18 +4,18 @@ import { BankInfo } from './basis-cash';
 
 const configurations: { [env: string]: Configuration } = {
   development: {
-    chainId: ChainId.HECO_TESTNET,
-    etherscanUrl: 'https://scan-testnet.hecochain.com',
-    defaultProvider: 'https://http-testnet.hecochain.com',
-    deployments: require('./basis-cash/deployments/deployments.heco_testnet.json'),
+    chainId: ChainId.BSC_TESTNET,
+    etherscanUrl: 'https://testnet.bscscan.com',
+    defaultProvider: 'https://data-seed-prebsc-1-s1.binance.org:8545',
+    deployments: require('./basis-cash/deployments/deployments.bsc_testnet.json'),
     externalTokens: {
-      DAI: ['0xde76ccae3413c7af312251e99803b1433d3187f4', 18],
-      yCRV: ['0xdf5e0e81dff6faf3a7e52ba697820c5e32d806a8', 18],
-      SUSD: ['0x57Ab1E02fEE23774580C119740129eAC7081e9D3', 18],
-      USDC: ['0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48', 6],
-      USDT: ['0xdAC17F958D2ee523a2206206994597C13D831ec7', 6],
-      'BAC_DAI-UNI-LPv2': ['0x73015a0863502f25187f00b1ecc1a42c4bd6a0cc', 18],
-      'BAS_DAI-UNI-LPv2': ['0x37a087e41ef9a7d9f02a4e0db544041b5ee6c309', 18],
+      DAI: ['0xEC5dCb5Dbf4B114C9d0F65BcCAb49EC54F6A0867', 18],
+      // yCRV: ['0xdf5e0e81dff6faf3a7e52ba697820c5e32d806a8', 18],
+      // SUSD: ['0x57Ab1E02fEE23774580C119740129eAC7081e9D3', 18],
+      USDC: ['0x64544969ed7ebf5f083679233325356ebe738930', 18],
+      USDT: ['0x337610d27c682e347c9cd60bd4b3b107c9d34ddd', 18],
+      'BAC_DAI-UNI-LPv2': ['0x9F55D4d51DfEFA930124d0f8b91C92c29c9f21D0', 18],
+      'BAS_DAI-UNI-LPv2': ['0xF311BE43A02D3ef3b6a564eaD5511c098a406D65', 18],
     },
     baseLaunchDate: new Date('2020-11-26T00:00:00Z'), // TODO
     bondLaunchesAt: new Date('2020-12-03T15:00:00Z'), // TODO
@@ -25,18 +25,18 @@ const configurations: { [env: string]: Configuration } = {
   },
   // Just copy from dev for build
   production: {
-    chainId: ChainId.HECO_TESTNET,
-    etherscanUrl: 'https://scan-testnet.hecochain.com',
-    defaultProvider: 'https://http-testnet.hecochain.com',
-    deployments: require('./basis-cash/deployments/deployments.heco_testnet.json'),
+    chainId: ChainId.BSC_TESTNET,
+    etherscanUrl: 'https://testnet.bscscan.com',
+    defaultProvider: 'https://data-seed-prebsc-1-s1.binance.org:8545',
+    deployments: require('./basis-cash/deployments/deployments.bsc_testnet.json'),
     externalTokens: {
-      DAI: ['0xde76ccae3413c7af312251e99803b1433d3187f4', 18],
-      yCRV: ['0xdf5e0e81dff6faf3a7e52ba697820c5e32d806a8', 18],
-      SUSD: ['0x57Ab1E02fEE23774580C119740129eAC7081e9D3', 18],
-      USDC: ['0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48', 6],
-      USDT: ['0xdAC17F958D2ee523a2206206994597C13D831ec7', 6],
-      'BAC_DAI-UNI-LPv2': ['0x73015a0863502f25187f00b1ecc1a42c4bd6a0cc', 18],
-      'BAS_DAI-UNI-LPv2': ['0x37a087e41ef9a7d9f02a4e0db544041b5ee6c309', 18],
+      DAI: ['0xEC5dCb5Dbf4B114C9d0F65BcCAb49EC54F6A0867', 18],
+      // yCRV: ['0xdf5e0e81dff6faf3a7e52ba697820c5e32d806a8', 18],
+      // SUSD: ['0x57Ab1E02fEE23774580C119740129eAC7081e9D3', 18],
+      USDC: ['0x64544969ed7ebf5f083679233325356ebe738930', 18],
+      USDT: ['0x337610d27c682e347c9cd60bd4b3b107c9d34ddd', 18],
+      'BAC_DAI-UNI-LPv2': ['0x9F55D4d51DfEFA930124d0f8b91C92c29c9f21D0', 18],
+      'BAS_DAI-UNI-LPv2': ['0xF311BE43A02D3ef3b6a564eaD5511c098a406D65', 18],
     },
     baseLaunchDate: new Date('2020-11-26T00:00:00Z'), // TODO
     bondLaunchesAt: new Date('2020-12-03T15:00:00Z'), // TODO
@@ -52,7 +52,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     contract: 'BACDAIPool',
     depositTokenName: 'DAI',
     earnTokenName: 'BAC',
-    finished: true,
+    finished: false,
     sort: 3,
   },
   BACUSDCPool: {
@@ -60,7 +60,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     contract: 'BACUSDCPool',
     depositTokenName: 'USDC',
     earnTokenName: 'BAC',
-    finished: true,
+    finished: false,
     sort: 4,
   },
   BACSUSDPool: {
@@ -76,7 +76,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     contract: 'BACUSDTPool',
     depositTokenName: 'USDT',
     earnTokenName: 'BAC',
-    finished: true,
+    finished: false,
     sort: 6,
   },
   BACyCRVPool: {
@@ -88,7 +88,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     sort: 7,
   },
   DAIBACLPTokenSharePool: {
-    name: 'Earn YSD by BAC-DAI-LP',
+    name: 'Earn BAS by BAC-DAI-LP',
     contract: 'DAIBACLPTokenSharePool',
     depositTokenName: 'BAC_DAI-UNI-LPv2',
     earnTokenName: 'BAS',
@@ -96,7 +96,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     sort: 1,
   },
   DAIBASLPTokenSharePool: {
-    name: 'Earn YSD by BAS-DAI-LP',
+    name: 'Earn BAS by BAS-DAI-LP',
     contract: 'DAIBASLPTokenSharePool',
     depositTokenName: 'BAS_DAI-UNI-LPv2',
     earnTokenName: 'BAS',
@@ -105,4 +105,4 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
   },
 };
 
-export default configurations[process.env.NODE_ENV || "development"];
+export default configurations[process.env.NODE_ENV || 'development'];

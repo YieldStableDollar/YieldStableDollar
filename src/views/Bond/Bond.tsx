@@ -20,6 +20,7 @@ import ExchangeStat from './components/ExchangeStat';
 import useTokenBalance from '../../hooks/useTokenBalance';
 import { getDisplayBalance } from '../../utils/formatBalance';
 import buttonA from '../../assets/img/buttonA.png';
+import { utils } from 'ethers';
 
 
 const Bond: React.FC = () => {
@@ -34,23 +35,31 @@ const Bond: React.FC = () => {
 
   const handleBuyBonds = useCallback(
     async (amount: string) => {
-      const tx = await basisCash.buyBonds(amount);
-      const bondAmount = Number(amount) / Number(getDisplayBalance(cashPrice));
-      addTransaction(tx, {
-        summary: `Buy ${bondAmount.toFixed(2)} BAB with ${amount} BAC`,
-      });
+      try {
+        const tx = await basisCash.buyBonds(amount, cashPrice);
+        const bondAmount = Number(amount) / Number(getDisplayBalance(cashPrice));
+        addTransaction(tx, {
+          summary: `Buy ${bondAmount.toFixed(2)} BAB with ${amount} BAC`,
+        });
+      } catch (error) {
+        alert("Error happened when buyBonds, reason: " + error.reason)
+      }
     },
     [basisCash, addTransaction, cashPrice],
   );
 
   const handleRedeemBonds = useCallback(
     async (amount: string) => {
-      const tx = await basisCash.redeemBonds(amount);
-      addTransaction(tx, { summary: `Redeem ${amount} BAB` });
+      try {
+        const tx = await basisCash.redeemBonds(amount, cashPrice);
+        addTransaction(tx, { summary: `Redeem ${amount} BAB` });
+      } catch (error) {
+        alert("Error happened when buyBonds, reason: " + error.reason)
+      }
     },
-    [basisCash, addTransaction],
+    [basisCash, addTransaction, cashPrice],
   );
-  const cashIsOverpriced = useMemo(() => cashPrice.gt(1.0), [cashPrice]);
+  const cashIsOverpriced = useMemo(() => cashPrice.gt(utils.parseUnits("1", 18)), [cashPrice]);
   const cashIsUnderPriced = useMemo(() => Number(bondStat?.priceInDAI) < 1.0, [bondStat]);
 
   const isLaunched = Date.now() >= config.bondLaunchesAt.getTime();
