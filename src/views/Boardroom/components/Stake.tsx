@@ -31,17 +31,17 @@ const Stake: React.FC = () => {
   const basisCash = useBasisCash();
   const boardroomVersion = useBoardroomVersion();
   const [approveStatus, approve] = useApprove(
-    basisCash.BAS,
+    basisCash.YSS,
     basisCash.boardroomByVersion(boardroomVersion).address,
   );
 
-  const tokenBalance = useTokenBalance(basisCash.BAS);
+  const tokenBalance = useTokenBalance(basisCash.YSS);
   const stakedBalance = useStakedBalanceOnBoardroom();
   const isOldBoardroomMember = boardroomVersion !== 'latest';
 
   const { onStake } = useStakeToBoardroom();
   const { onWithdraw } = useWithdrawFromBoardroom();
-  const { onRedeem } = useRedeemOnBoardroom('Redeem BAS for Boardroom Migration');
+  const { onRedeem } = useRedeemOnBoardroom('Redeem YSS for Boardroom Migration');
 
   const [onPresentDeposit, onDismissDeposit] = useModal(
     <DepositModal
@@ -70,7 +70,7 @@ const Stake: React.FC = () => {
       <StyledCardContentInner>
         <StyledCardHeader>
           <CardIcon>
-            <TokenSymbol symbol="BAS"/>
+            <TokenSymbol symbol="YSS"/>
           </CardIcon>
           <Value value={getDisplayBalance(stakedBalance)}/>
           <Label text="Basis Share Staked"/>

@@ -64,7 +64,7 @@ const Boardroom: React.FC = () => {
             <br />
             The boardroom upgrade was successful. Please settle and withdraw your stake from the
             legacy boardroom, then stake again on the new boardroom contract{' '}
-            <b>to continue earning BAC seigniorage.</b>
+            <b>to continue earning YSD seigniorage.</b>
           </Notice>
         </StyledNoticeWrapper>
       );
@@ -116,7 +116,7 @@ const Boardroom: React.FC = () => {
               <Stat
                 icon="💵"
                 title={cashStat ? `$${cashStat.priceInDAI}` : '-'}
-                description="BAC Price (TWAP)"
+                description="YSD Price (TWAP)"
               />
               <Stat
                 icon="🚀"

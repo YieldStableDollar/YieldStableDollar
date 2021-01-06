@@ -10,16 +10,16 @@ import USDCLogo from '../../assets/img/USDC.png';
 import USDTLogo from '../../assets/img/USDT.png';
 
 const logosBySymbol: {[title: string]: string} = {
-  'BAC': ysdLogo,
-  'BAB': yssLogo,
-  'BAS': ysbLogo,
+  'YSD': ysdLogo,
+  'YSB': yssLogo,
+  'YSS': ysbLogo,
   'yCRV': yCRVLogo,
   'DAI': DAILogo,
   'SUSD': sUSDLogo,
   'USDC': USDCLogo,
   'USDT': USDTLogo,
-  'BAC_DAI-UNI-LPv2': ysdLogo,
-  'BAS_DAI-UNI-LPv2': ysdLogo,
+  'YSD_DAI-UNI-LPv2': ysdLogo,
+  'YSS_DAI-UNI-LPv2': ysdLogo,
 };
 
 type BasisLogoProps = {

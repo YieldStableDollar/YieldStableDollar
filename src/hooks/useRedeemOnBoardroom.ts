@@ -7,9 +7,9 @@ const useRedeemOnBoardroom = (description?: string) => {
   const handleTransactionReceipt = useHandleTransactionReceipt();
 
   const handleRedeem = useCallback(() => {
-    const alertDesc = description || 'Redeem BAS from Boardroom';
+    const alertDesc = description || 'Redeem YSS from Boardroom';
     handleTransactionReceipt(basisCash.exitFromBoardroom(), alertDesc);
-  }, [basisCash]);
+  }, [basisCash, description, handleTransactionReceipt]);
   return { onRedeem: handleRedeem };
 };
 

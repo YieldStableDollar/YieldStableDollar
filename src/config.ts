@@ -14,8 +14,8 @@ const configurations: { [env: string]: Configuration } = {
       // SUSD: ['0x57Ab1E02fEE23774580C119740129eAC7081e9D3', 18],
       USDC: ['0x64544969ed7ebf5f083679233325356ebe738930', 18],
       USDT: ['0x337610d27c682e347c9cd60bd4b3b107c9d34ddd', 18],
-      'BAC_DAI-UNI-LPv2': ['0x9F55D4d51DfEFA930124d0f8b91C92c29c9f21D0', 18],
-      'BAS_DAI-UNI-LPv2': ['0xF311BE43A02D3ef3b6a564eaD5511c098a406D65', 18],
+      'YSD_DAI-UNI-LPv2': ['0x9F55D4d51DfEFA930124d0f8b91C92c29c9f21D0', 18],
+      'YSS_DAI-UNI-LPv2': ['0xF311BE43A02D3ef3b6a564eaD5511c098a406D65', 18],
     },
     baseLaunchDate: new Date('2020-11-26T00:00:00Z'), // TODO
     bondLaunchesAt: new Date('2020-12-03T15:00:00Z'), // TODO
@@ -35,8 +35,8 @@ const configurations: { [env: string]: Configuration } = {
       // SUSD: ['0x57Ab1E02fEE23774580C119740129eAC7081e9D3', 18],
       USDC: ['0x64544969ed7ebf5f083679233325356ebe738930', 18],
       USDT: ['0x337610d27c682e347c9cd60bd4b3b107c9d34ddd', 18],
-      'BAC_DAI-UNI-LPv2': ['0x9F55D4d51DfEFA930124d0f8b91C92c29c9f21D0', 18],
-      'BAS_DAI-UNI-LPv2': ['0xF311BE43A02D3ef3b6a564eaD5511c098a406D65', 18],
+      'YSD_DAI-UNI-LPv2': ['0x9F55D4d51DfEFA930124d0f8b91C92c29c9f21D0', 18],
+      'YSS_DAI-UNI-LPv2': ['0xF311BE43A02D3ef3b6a564eaD5511c098a406D65', 18],
     },
     baseLaunchDate: new Date('2020-11-26T00:00:00Z'), // TODO
     bondLaunchesAt: new Date('2020-12-03T15:00:00Z'), // TODO
@@ -47,59 +47,59 @@ const configurations: { [env: string]: Configuration } = {
 };
 
 export const bankDefinitions: { [contractName: string]: BankInfo } = {
-  BACDAIPool: {
-    name: 'Earn BAC by DAI',
-    contract: 'BACDAIPool',
+  YSDDAIPool: {
+    name: 'Earn YSD by DAI',
+    contract: 'YSDDAIPool',
     depositTokenName: 'DAI',
-    earnTokenName: 'BAC',
+    earnTokenName: 'YSD',
     finished: false,
     sort: 3,
   },
-  BACUSDCPool: {
-    name: 'Earn BAC by USDC',
-    contract: 'BACUSDCPool',
+  YSDUSDCPool: {
+    name: 'Earn YSD by USDC',
+    contract: 'YSDUSDCPool',
     depositTokenName: 'USDC',
-    earnTokenName: 'BAC',
+    earnTokenName: 'YSD',
     finished: false,
     sort: 4,
   },
-  BACSUSDPool: {
-    name: 'Earn BAC by sUSD',
-    contract: 'BACSUSDPool',
+  YSDSUSDPool: {
+    name: 'Earn YSD by sUSD',
+    contract: 'YSDSUSDPool',
     depositTokenName: 'SUSD',
-    earnTokenName: 'BAC',
+    earnTokenName: 'YSD',
     finished: true,
     sort: 5,
   },
-  BACUSDTPool: {
-    name: 'Earn BAC by USDT',
-    contract: 'BACUSDTPool',
+  YSDUSDTPool: {
+    name: 'Earn YSD by USDT',
+    contract: 'YSDUSDTPool',
     depositTokenName: 'USDT',
-    earnTokenName: 'BAC',
+    earnTokenName: 'YSD',
     finished: false,
     sort: 6,
   },
-  BACyCRVPool: {
-    name: 'Earn BAC by yCRV',
-    contract: 'BACyCRVPool',
+  YSDyCRVPool: {
+    name: 'Earn YSD by yCRV',
+    contract: 'YSDyCRVPool',
     depositTokenName: 'yCRV',
-    earnTokenName: 'BAC',
+    earnTokenName: 'YSD',
     finished: true,
     sort: 7,
   },
-  DAIBACLPTokenSharePool: {
-    name: 'Earn BAS by BAC-DAI-LP',
-    contract: 'DAIBACLPTokenSharePool',
-    depositTokenName: 'BAC_DAI-UNI-LPv2',
-    earnTokenName: 'BAS',
+  DAIYSDLPTokenSharePool: {
+    name: 'Earn YSS by YSD-DAI-LP',
+    contract: 'DAIYSDLPTokenSharePool',
+    depositTokenName: 'YSD_DAI-UNI-LPv2',
+    earnTokenName: 'YSS',
     finished: false,
     sort: 1,
   },
-  DAIBASLPTokenSharePool: {
-    name: 'Earn BAS by BAS-DAI-LP',
-    contract: 'DAIBASLPTokenSharePool',
-    depositTokenName: 'BAS_DAI-UNI-LPv2',
-    earnTokenName: 'BAS',
+  DAIYSSLPTokenSharePool: {
+    name: 'Earn YSS by YSS-DAI-LP',
+    contract: 'DAIYSSLPTokenSharePool',
+    depositTokenName: 'YSS_DAI-UNI-LPv2',
+    earnTokenName: 'YSS',
     finished: false,
     sort: 2,
   },

@@ -2862,7 +2862,7 @@
       }
     ]
   },
-  "BACDAIPool": {
+  "YSDDAIPool": {
     "address": "0xA43746F2050785299428a305F7338D973cD6F006",
     "abi": [
       {
@@ -3345,7 +3345,7 @@
       }
     ]
   },
-  "BACSUSDPool": {
+  "YSDSUSDPool": {
     "address": "0x54307FD8151B801Add5D116b313aaC1fc5C4e20b",
     "abi": [
       {
@@ -3828,7 +3828,7 @@
       }
     ]
   },
-  "BACUSDCPool": {
+  "YSDUSDCPool": {
     "address": "0x8669a3CC6513463b97E0a47468D16Aa97Db448FF",
     "abi": [
       {
@@ -4311,7 +4311,7 @@
       }
     ]
   },
-  "BACUSDTPool": {
+  "YSDUSDTPool": {
     "address": "0x1DD52E94b6b25CB807459a1fAb949BA8Bb8605B2",
     "abi": [
       {
@@ -4794,7 +4794,7 @@
       }
     ]
   },
-  "BACyCRVPool": {
+  "YSDyCRVPool": {
     "address": "0x349D0d47D3EdAb249ae3019a7B7DCe47086B4979",
     "abi": [
       {
@@ -5277,7 +5277,7 @@
       }
     ]
   },
-  "DAIBACLPTokenSharePool": {
+  "DAIYSDLPTokenSharePool": {
     "address": "0xEB96E8c1b50e8b40A9f63801d8ac7D8F44c7954e",
     "abi": [
       {
@@ -5754,7 +5754,7 @@
       }
     ]
   },
-  "DAIBASLPTokenSharePool": {
+  "DAIYSSLPTokenSharePool": {
     "address": "0x4468D866592807c533fd1e95BB59F4136915c7c6",
     "abi": [
       {
