@@ -20,6 +20,7 @@ import ExchangeStat from './components/ExchangeStat';
 import useTokenBalance from '../../hooks/useTokenBalance';
 import { getDisplayBalance } from '../../utils/formatBalance';
 import buttonA from '../../assets/img/buttonA.png';
+import { utils } from 'ethers';
 
 
 const Bond: React.FC = () => {
@@ -50,7 +51,7 @@ const Bond: React.FC = () => {
     },
     [basisCash, addTransaction],
   );
-  const cashIsOverpriced = useMemo(() => cashPrice.gt(1.0), [cashPrice]);
+  const cashIsOverpriced = useMemo(() => cashPrice.gt(utils.parseUnits("1", 18)), [cashPrice]);
   const cashIsUnderPriced = useMemo(() => Number(bondStat?.priceInDAI) < 1.0, [bondStat]);
 
   const isLaunched = Date.now() >= config.bondLaunchesAt.getTime();
