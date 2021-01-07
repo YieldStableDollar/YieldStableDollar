@@ -18,9 +18,9 @@ const configurations: { [env: string]: Configuration } = {
       'YSS_DAI-UNI-LPv2': ['0xF311BE43A02D3ef3b6a564eaD5511c098a406D65', 18],
     },
     baseLaunchDate: new Date('2021-01-07T00:00:00Z'), // TODO
-    wholeSiteLaunchesAt: new Date('2021-01-11T12:00:00Z'),
-    bondLaunchesAt: new Date('2021-01-11T12:00:00Z'), // TODO
-    boardroomLaunchesAt: new Date('2021-01-11T12:00:00Z'), // TODO
+    wholeSiteLaunchesAt: new Date('2021-01-07T00:00:00Z'),
+    bondLaunchesAt: new Date('2021-01-07T00:00:00Z'), // TODO
+    boardroomLaunchesAt: new Date('2021-01-07T00:00:00Z'), // TODO
     refreshInterval: 10000,
     gasLimitMultiplier: 1.1,
   },
