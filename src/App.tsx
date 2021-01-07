@@ -1,6 +1,10 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  // Route,
+  Switch
+} from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { UseWalletProvider } from 'use-wallet';
 
@@ -18,24 +22,25 @@ import config from './config';
 import Updaters from './state/Updaters';
 import Boardroom from './views/Boardroom';
 import Popups from './components/Popups';
+import { ProtectedRoute } from './components/ProtectedRoute';
 
 const App: React.FC = () => {
   return (
     <Providers>
       <Router>
         <Switch>
-          <Route path="/" exact>
+          <ProtectedRoute path="/" exact>
             <Home />
-          </Route>
-          <Route path="/bank">
+          </ProtectedRoute>
+          <ProtectedRoute path="/bank">
             <Banks />
-          </Route>
-          <Route path="/bonds">
+          </ProtectedRoute>
+          <ProtectedRoute path="/bonds">
             <Bond />
-          </Route>
-          <Route path="/boardroom">
+          </ProtectedRoute>
+          <ProtectedRoute path="/boardroom">
             <Boardroom />
-          </Route>
+          </ProtectedRoute>
         </Switch>
       </Router>
     </Providers>
