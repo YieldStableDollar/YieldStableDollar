@@ -39,10 +39,17 @@ const configurations: { [env: string]: Configuration } = {
       'YSD_DAI-UNI-LPv2': ['0x9F55D4d51DfEFA930124d0f8b91C92c29c9f21D0', 18],
       'YSS_DAI-UNI-LPv2': ['0xF311BE43A02D3ef3b6a564eaD5511c098a406D65', 18],
     },
+    // Use this for public preview
+    // baseLaunchDate: new Date('2021-01-07T00:00:00Z'), // TODO
+    // wholeSiteLaunchesAt: new Date('2021-01-11T12:00:00Z'),
+    // bondLaunchesAt: new Date('2021-01-11T12:00:00Z'), // TODO
+    // boardroomLaunchesAt: new Date('2021-01-11T12:00:00Z'), // TODO
+
+    // Only for internal preview
     baseLaunchDate: new Date('2021-01-07T00:00:00Z'), // TODO
-    wholeSiteLaunchesAt: new Date('2021-01-11T12:00:00Z'),
-    bondLaunchesAt: new Date('2021-01-11T12:00:00Z'), // TODO
-    boardroomLaunchesAt: new Date('2021-01-11T12:00:00Z'), // TODO
+    wholeSiteLaunchesAt: new Date('2021-01-07T00:00:00Z'),
+    bondLaunchesAt: new Date('2021-01-07T00:00:00Z'), // TODO
+    boardroomLaunchesAt: new Date('2021-01-07T00:00:00Z'), // TODO
     refreshInterval: 10000,
     gasLimitMultiplier: 1.1,
   },
