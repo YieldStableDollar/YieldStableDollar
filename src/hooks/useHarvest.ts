@@ -12,7 +12,7 @@ const useHarvest = (bank: Bank) => {
       basisCash.harvest(bank.contract),
       `Claim ${bank.earnTokenName} from ${bank.contract}`,
     );
-  }, [bank, basisCash]);
+  }, [bank.contract, bank.earnTokenName, basisCash, handleTransactionReceipt]);
 
   return { onReward: handleReward };
 };

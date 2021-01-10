@@ -92,7 +92,7 @@ const BankCard: React.FC<BankCardProps> = ({ bank }) => {
           <StyledDetail>Earn {`Basis ${bank.earnTokenName}`}</StyledDetail>
         </StyledDetails>
         <Stylebtndiv>
-          <Button size="sm" variant="default" text="Select" to={`/bank/${bank.contract}`}/>
+          <Button size="sm" variant="default" text="Select" to={`/bank/${bank.bankDefinitionName}`}/>
         </Stylebtndiv>
       </StyledContent>
     </StyledCardWrapper>

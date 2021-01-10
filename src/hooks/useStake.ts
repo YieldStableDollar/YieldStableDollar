@@ -12,11 +12,11 @@ const useStake = (bank: Bank) => {
     (amount: string) => {
       const amountBn = parseUnits(amount, bank.depositToken.decimal);
       handleTransactionReceipt(
-        basisCash.stake(bank.contract, amountBn),
+        basisCash.stake(bank, amountBn),
         `Stake ${amount} ${bank.depositTokenName} to ${bank.contract}`,
       );
     },
-    [bank, basisCash],
+    [bank, basisCash, handleTransactionReceipt],
   );
   return { onStake: handleStake };
 };

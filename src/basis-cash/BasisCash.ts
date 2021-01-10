@@ -1,6 +1,6 @@
 import { Fetcher, Route, Token } from '@lychees/uniscam-sdk';
 import { Configuration } from './config';
-import { ContractName, TokenStat, TreasuryAllocationTime } from './types';
+import { Bank, ContractName, TokenStat, TreasuryAllocationTime } from './types';
 import { BigNumber, Contract, ethers, Overrides, utils } from 'ethers';
 import { decimalToBalance } from './ether-utils';
 import { TransactionResponse } from '@ethersproject/providers';
@@ -231,36 +231,58 @@ export class BasisCash {
   }
 
   async stakedBalanceOnBank(
-    poolName: ContractName,
+    bank: Bank,
     account = this.myAccount,
   ): Promise<BigNumber> {
-    const pool = this.contracts[poolName];
-    console.info('stakedBalanceOnBank::pool', pool);
-    console.info('stakedBalanceOnBank::account', account);
+    const pool = this.contracts[bank.contract];
+    const isMultiPool = bank && bank.contract === 'YSDMultiPool';
+    console.info('stakedBalanceOnBank::poolName', bank.contract, 'pool', pool, 'account', account, 'isMultiPool:', isMultiPool);
     try {
+      if (isMultiPool) {
+        const balance = await pool.subBalanceOf(account, bank.depositToken.address);
+        console.info(`stakedBalanceOnBank::subBalance token ${bank.depositToken.address} for ${account} is ${balance}`);
+        return balance;
+      }
       const balance = await pool.balanceOf(account);
       console.info(`stakedBalanceOnBank::balance for ${account} is ${balance}`);
       return balance;
     } catch (err) {
-      console.error(`Failed to call balanceOf() on pool ${pool.address}: ${err.stack}`);
+      if (pool === undefined) {
+        console.error(`Failed to call balanceOf()/subBalanceOf(), pool undefined: ${err.stack}`);
+        return BigNumber.from(0);
+      }
+      console.error(`Failed to call balanceOf()/subBalanceOf() on pool ${pool.address}: ${err.stack}`);
       return BigNumber.from(0);
     }
   }
 
   /**
    * Deposits token to given pool.
-   * @param poolName A name of pool contract.
+   * @param bank Bank info.
    * @param amount Number of tokens with decimals applied. (e.g. 1.45 DAI * 10^18)
    * @returns {string} Transaction hash
    */
-  async stake(poolName: ContractName, amount: BigNumber): Promise<TransactionResponse> {
-    const pool = this.contracts[poolName];
-    console.info('pool', pool);
+  async stake(bank: Bank, amount: BigNumber): Promise<TransactionResponse> {
+    const pool = this.contracts[bank.contract];
+    console.info('BasisCash::stake:pool', pool);
+    const isMultiPool = bank && bank.contract === 'YSDMultiPool';
     try {
+      if (isMultiPool) {
+        const tokenAddress = bank.depositToken.address;
+        const gas = await pool.estimateGas.stake(tokenAddress, amount);
+        console.info('BasisCash::stake:estimateGas', gas, 'tokenAddress:', tokenAddress, 'amount:', amount);
+        return await pool.stake(tokenAddress, amount, this.gasOptions(gas));
+      }
       const gas = await pool.estimateGas.stake(amount);
-      console.info('estimateGas', gas);
+      console.info('BasisCash::stake:estimateGas', gas, 'amount:', amount);
       return await pool.stake(amount, this.gasOptions(gas));
     } catch (error) {
+      if (isMultiPool) {
+        pool.callStatic.stake(bank.depositToken.address, amount).then((callError) => {
+          console.error('Error while staking, reason:' + callError.reason);
+          throw callError;
+        });
+      }
       pool.callStatic.stake(amount).then((callError) => {
         console.error('Error while staking, reason:' + callError.reason);
         throw callError;
@@ -270,13 +292,21 @@ export class BasisCash {
 
   /**
    * Withdraws token from given pool.
-   * @param poolName A name of pool contract.
+   * @param bank Bank info.
    * @param amount Number of tokens with decimals applied. (e.g. 1.45 DAI * 10^18)
    * @returns {string} Transaction hash
    */
-  async unstake(poolName: ContractName, amount: BigNumber): Promise<TransactionResponse> {
-    const pool = this.contracts[poolName];
+  async unstake(bank: Bank, amount: BigNumber): Promise<TransactionResponse> {
+    const pool = this.contracts[bank.contract];
+    const isMultiPool = bank && bank.contract === 'YSDMultiPool';
+    if (isMultiPool) {
+      const tokenAddress = bank.depositToken.address;
+      const gas = await pool.estimateGas.withdraw(tokenAddress, amount);
+      console.info('BasisCash::unstake:estimateGas', gas, 'tokenAddress:', tokenAddress, 'amount:', amount);
+      return await pool.withdraw(tokenAddress, amount, this.gasOptions(gas));
+    }
     const gas = await pool.estimateGas.withdraw(amount);
+    console.info('BasisCash::unstake:estimateGas', gas, 'amount:', amount);
     return await pool.withdraw(amount, this.gasOptions(gas));
   }
 
@@ -291,10 +321,19 @@ export class BasisCash {
 
   /**
    * Harvests and withdraws deposited tokens from the pool.
+   * @param bank Bank info.
    */
-  async exit(poolName: ContractName): Promise<TransactionResponse> {
-    const pool = this.contracts[poolName];
+  async exit(bank: Bank): Promise<TransactionResponse> {
+    const pool = this.contracts[bank.contract];
+    const isMultiPool = bank && bank.contract === 'YSDMultiPool';
+    if (isMultiPool) {
+      const tokenAddress = bank.depositToken.address;
+      const gas = await pool.estimateGas.exit(tokenAddress);
+      console.info('BasisCash::exit:estimateGas', gas, 'tokenAddress:', tokenAddress);
+      return await pool.exit(tokenAddress, this.gasOptions(gas));
+    }
     const gas = await pool.estimateGas.exit();
+    console.info('BasisCash::exit:estimateGas', gas);
     return await pool.exit(this.gasOptions(gas));
   }
 

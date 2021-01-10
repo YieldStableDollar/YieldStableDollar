@@ -2,17 +2,17 @@ import { useCallback, useEffect, useState } from 'react';
 
 import { BigNumber } from 'ethers';
 import useBasisCash from './useBasisCash';
-import { ContractName } from '../basis-cash';
+import { Bank } from '../basis-cash';
 import config from '../config';
 
-const useStakedBalance = (poolName: ContractName) => {
+const useStakedBalance = (bank: Bank) => {
   const [balance, setBalance] = useState(BigNumber.from(0));
   const basisCash = useBasisCash();
 
   const fetchBalance = useCallback(async () => {
-    const balance = await basisCash.stakedBalanceOnBank(poolName, basisCash.myAccount);
+    const balance = await basisCash.stakedBalanceOnBank(bank, basisCash.myAccount);
     setBalance(balance);
-  }, [basisCash?.isUnlocked, poolName]);
+  }, [bank, basisCash]);
 
   useEffect(() => {
     if (basisCash?.isUnlocked) {
@@ -21,7 +21,7 @@ const useStakedBalance = (poolName: ContractName) => {
       const refreshBalance = setInterval(fetchBalance, config.refreshInterval);
       return () => clearInterval(refreshBalance);
     }
-  }, [basisCash?.isUnlocked, poolName, setBalance, basisCash]);
+  }, [setBalance, basisCash, fetchBalance]);
 
   return balance;
 };

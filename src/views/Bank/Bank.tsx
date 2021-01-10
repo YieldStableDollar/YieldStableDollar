@@ -21,7 +21,7 @@ import buttonA from '../../assets/img/buttonA.png';
 const Bank: React.FC = () => {
   useEffect(() => window.scrollTo(0, 0));
 
-  const { bankId } = useParams();
+  const { bankId } = useParams<{ bankId: string }>();
   const bank = useBank(bankId);
 
   const { account } = useWallet();

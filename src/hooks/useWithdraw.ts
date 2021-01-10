@@ -12,11 +12,11 @@ const useWithdraw = (bank: Bank) => {
     (amount: string) => {
       const amountBn = parseUnits(amount, bank.depositToken.decimal);
       handleTransactionReceipt(
-        basisCash.unstake(bank.contract, amountBn),
+        basisCash.unstake(bank, amountBn),
         `Withdraw ${amount} ${bank.depositTokenName} from ${bank.contract}`,
       );
     },
-    [bank, basisCash],
+    [bank, basisCash, handleTransactionReceipt],
   );
   return { onWithdraw: handleWithdraw };
 };

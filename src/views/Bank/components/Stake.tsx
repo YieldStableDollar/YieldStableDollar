@@ -30,10 +30,9 @@ interface StakeProps {
 
 const Stake: React.FC<StakeProps> = ({ bank }) => {
   const [approveStatus, approve] = useApprove(bank.depositToken, bank.address);
-
   // TODO: reactive update of token balance
   const tokenBalance = useTokenBalance(bank.depositToken);
-  const stakedBalance = useStakedBalance(bank.contract);
+  const stakedBalance = useStakedBalance(bank);
 
   const { onStake } = useStake(bank);
   const { onWithdraw } = useWithdraw(bank);
