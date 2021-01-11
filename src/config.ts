@@ -14,8 +14,8 @@ const configurations: { [env: string]: Configuration } = {
       // SUSD: ['0x57Ab1E02fEE23774580C119740129eAC7081e9D3', 18],
       USDC: ['0x64544969ed7ebf5f083679233325356ebe738930', 18],
       USDT: ['0x337610d27c682e347c9cd60bd4b3b107c9d34ddd', 18],
-      'YSD_DAI-UNI-LPv2': ['0x358512D2Bc99382b569F94d60d8Fd401eCddAf8d', 18],
-      'YSS_DAI-UNI-LPv2': ['0xAcE72f91f8498d8CD9d990f2d3FF1503aE419e7F', 18],
+      'YSD_DAI-UNI-LPv2': ['0x80bdd3D0AB6556Fa32Db260264E88e21fbc546dc', 18],
+      'YSS_DAI-UNI-LPv2': ['0x596D60dbB121bBE6f2732060B298a93D6CBd827a', 18],
     },
     baseLaunchDate: new Date('2021-01-07T00:00:00Z'), // TODO
     wholeSiteLaunchesAt: new Date('2021-01-07T00:00:00Z'),
@@ -36,8 +36,8 @@ const configurations: { [env: string]: Configuration } = {
       // SUSD: ['0x57Ab1E02fEE23774580C119740129eAC7081e9D3', 18],
       USDC: ['0x64544969ed7ebf5f083679233325356ebe738930', 18],
       USDT: ['0x337610d27c682e347c9cd60bd4b3b107c9d34ddd', 18],
-      'YSD_DAI-UNI-LPv2': ['0x358512D2Bc99382b569F94d60d8Fd401eCddAf8d', 18],
-      'YSS_DAI-UNI-LPv2': ['0xAcE72f91f8498d8CD9d990f2d3FF1503aE419e7F', 18],
+      'YSD_DAI-UNI-LPv2': ['0x80bdd3D0AB6556Fa32Db260264E88e21fbc546dc', 18],
+      'YSS_DAI-UNI-LPv2': ['0x596D60dbB121bBE6f2732060B298a93D6CBd827a', 18],
     },
     // Use this for public preview
     // baseLaunchDate: new Date('2021-01-07T00:00:00Z'), // TODO
