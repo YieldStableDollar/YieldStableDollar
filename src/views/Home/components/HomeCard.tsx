@@ -26,6 +26,7 @@ const HomeCard: React.FC<HomeCardProps> = ({
   stat,
 }) => {
   const tokenUrl = `${config.etherscanUrl}/address/${address}`;
+  const buyTokenUrl = `https://app.unisave.exchange/#/swap?inputCurrency=${config.externalTokens.DAI[0]}&outputCurrency=${address}`
   return (
     <Wrapper>
       <StyledCards>
@@ -45,6 +46,10 @@ const HomeCard: React.FC<HomeCardProps> = ({
           <StyledSupplyLabel href={tokenUrl} target="_blank" color={color}>
             {supplyLabel}
           </StyledSupplyLabel>
+          { symbol !== 'YSB' && 
+            <StyledBuyLabel href={buyTokenUrl} target="_blank" color="#efd40d">
+            BUY {symbol} on Unisave
+          </StyledBuyLabel>}
         </CardSection>
       </StyledCards>
     </Wrapper>
@@ -100,6 +105,11 @@ const ValueSkeletonPadding = styled.div`
 `;
 
 const StyledSupplyLabel = styled.a`
+  display: block;
+  color: ${(props) => props.color};
+`;
+
+const StyledBuyLabel = styled.a`
   display: block;
   color: ${(props) => props.color};
 `;

@@ -59,7 +59,7 @@ const Home: React.FC = () => {
         <Spacer size="lg" />
         <HomeCard
           title="YSS"
-          symbol="YSB"
+          symbol="YSS"
           color="rgba(72, 225, 159, 0.5)"
           address={shareAddr}
           stat={share}
@@ -67,7 +67,7 @@ const Home: React.FC = () => {
         <Spacer size="lg" />
         <HomeCard
           title="YSB"
-          symbol="YSS"
+          symbol="YSB"
           color="rgba(72, 225, 159, 0.5)"
           address={bondAddr}
           stat={bond}
