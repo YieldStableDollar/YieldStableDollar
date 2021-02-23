@@ -2888,7 +2888,7 @@
     ]
   },
   "BondOracle": {
-    "address": "0x43E0b34a463037Fb10A75e0DEa51B3f4F2971b8B",
+    "address": "0x8Fe8c11e321B30A0F7bFe31167569f7C49101652",
     "abi": [
       {
         "inputs": [
