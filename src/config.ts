@@ -36,8 +36,8 @@ const configurations: { [env: string]: Configuration } = {
       // SUSD: ['0x57Ab1E02fEE23774580C119740129eAC7081e9D3', 18],
       USDC: ['0x64544969ed7ebf5f083679233325356ebe738930', 18],
       USDT: ['0x337610d27c682e347c9cd60bd4b3b107c9d34ddd', 18],
-      'YSD_DAI-UNI-LPv2': ['0x20A2701664482d2756f59c70E60CF165638C1aD4', 18],
-      'YSS_DAI-UNI-LPv2': ['0x92a423Ad73f82e26fCB0fF9Fe259f7d85828dbB8', 18],
+      'YSD_DAI-UNI-LPv2': ['0x514E95073beceF6Fe161B10F26a9594ed017C710', 18],
+      'YSS_DAI-UNI-LPv2': ['0xC1725deE21613fF8cB3d64BE66E47C4a51b2639e', 18],
     },
     // Use this for public preview
     // baseLaunchDate: new Date('2021-01-07T00:00:00Z'), // TODO
