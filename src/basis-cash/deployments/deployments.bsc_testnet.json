@@ -1,6 +1,6 @@
 {
   "Cash": {
-    "address": "0xE4E134871825c7Cb236f786bA8b77d8D3d085F94",
+    "address": "0x616Ee883E44590FBfA9b10929F237E349986DFc0",
     "abi": [
       {
         "inputs": [],
@@ -454,7 +454,7 @@
     ]
   },
   "Bond": {
-    "address": "0x3E9e41E11bf2bB855eD32F966A6Cd9333B7f2b43",
+    "address": "0xEFfa5f2b3E2b8cC9CE8D7b3271fD1ceFFCe82B57",
     "abi": [
       {
         "inputs": [],
@@ -908,7 +908,7 @@
     ]
   },
   "Share": {
-    "address": "0xBd513F7c82008Ba464F865462387C524f5554185",
+    "address": "0x3eE121CaE5602814a805A2FCe586Fe8ACF2fe88C",
     "abi": [
       {
         "inputs": [],
@@ -1362,7 +1362,7 @@
     ]
   },
   "Boardroom": {
-    "address": "0x934C1bF706f16c0e765030B67a1b95459C537a18",
+    "address": "0xDeEa3b7693eda24ebbea66a69276867F85CB1C58",
     "abi": [
       {
         "inputs": [
@@ -1741,7 +1741,7 @@
     ]
   },
   "Treasury": {
-    "address": "0xC701864B4C73D561DffEB549797e02fbC8830ba4",
+    "address": "0xbE7B287b608354E19C41654C14bB219Bd2F673c6",
     "abi": [
       {
         "inputs": [
@@ -2451,8 +2451,8 @@
       }
     ]
   },
-  "SeigniorageOracle": {
-    "address": "0x43E0b34a463037Fb10A75e0DEa51B3f4F2971b8B",
+  "BondOracle": {
+    "address": "0x2062adaD4fcAF8c0F04A9A6fD68a8B0F3CF87A7A",
     "abi": [
       {
         "inputs": [
@@ -2887,8 +2887,8 @@
       }
     ]
   },
-  "BondOracle": {
-    "address": "0x8Fe8c11e321B30A0F7bFe31167569f7C49101652",
+  "SeigniorageOracle": {
+    "address": "0x2062adaD4fcAF8c0F04A9A6fD68a8B0F3CF87A7A",
     "abi": [
       {
         "inputs": [
@@ -3324,7 +3324,7 @@
     ]
   },
   "DAIYSDLPTokenSharePool": {
-    "address": "0x560eee111594804A60172b924513050c12035AE7",
+    "address": "0xc442A98041Ae0FFAE4A85aDAe38e7d0Ccf3DCB53",
     "abi": [
       {
         "inputs": [
@@ -3801,7 +3801,7 @@
     ]
   },
   "DAIYSSLPTokenSharePool": {
-    "address": "0xE7b6fd3293b8bB46ff82370cA6CCc2F96020d44b",
+    "address": "0x6061AD79cA0Fe2c19902602c84A2B3B814052Ee6",
     "abi": [
       {
         "inputs": [
@@ -4747,7 +4747,7 @@
     ]
   },
   "YSDMultiPool": {
-    "address": "0x317aDa69A5c1a6a0C6F5Fc50861138602E537d75",
+    "address": "0x3072deEDED03427c4796ad0AEBf319a0E172fAb7",
     "abi": [
       {
         "inputs": [
