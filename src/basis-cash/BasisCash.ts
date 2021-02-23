@@ -110,24 +110,16 @@ export class BasisCash {
    * calculated by 1-day Time-Weight Averaged Price (TWAP).
    */
   async getCashStatInEstimatedTWAP(): Promise<TokenStat> {
-    const { Oracle } = this.contracts;
+    const { SeigniorageOracle } = this.contracts;
 
-    // estimate current TWAP price
-    const cumulativePrice: BigNumber = await this.bacDai.price0CumulativeLast();
-    const cumulativePriceLast = await Oracle.price0CumulativeLast();
-    const elapsedSec = Math.floor(Date.now() / 1000 - (await Oracle.blockTimestampLast()));
-
-    const denominator112 = BigNumber.from(2).pow(112);
-    const denominator1e18 = BigNumber.from(10).pow(18);
-    const cashPriceTWAP = cumulativePrice
-      .sub(cumulativePriceLast)
-      .mul(denominator1e18)
-      .div(elapsedSec)
-      .div(denominator112);
+    const expectedPrice = await SeigniorageOracle.expectedPrice(
+      this.YSD.address,
+      ethers.utils.parseEther('1'),
+    );
 
     const totalSupply = await this.YSD.displayedTotalSupply();
     return {
-      priceInDAI: getDisplayBalance(cashPriceTWAP),
+      priceInDAI: getDisplayBalance(expectedPrice),
       totalSupply,
     };
   }
@@ -230,17 +222,25 @@ export class BasisCash {
     }
   }
 
-  async stakedBalanceOnBank(
-    bank: Bank,
-    account = this.myAccount,
-  ): Promise<BigNumber> {
+  async stakedBalanceOnBank(bank: Bank, account = this.myAccount): Promise<BigNumber> {
     const pool = this.contracts[bank.contract];
     const isMultiPool = bank && bank.contract === 'YSDMultiPool';
-    console.info('stakedBalanceOnBank::poolName', bank.contract, 'pool', pool, 'account', account, 'isMultiPool:', isMultiPool);
+    console.info(
+      'stakedBalanceOnBank::poolName',
+      bank.contract,
+      'pool',
+      pool,
+      'account',
+      account,
+      'isMultiPool:',
+      isMultiPool,
+    );
     try {
       if (isMultiPool) {
         const balance = await pool.subBalanceOf(account, bank.depositToken.address);
-        console.info(`stakedBalanceOnBank::subBalance token ${bank.depositToken.address} for ${account} is ${balance}`);
+        console.info(
+          `stakedBalanceOnBank::subBalance token ${bank.depositToken.address} for ${account} is ${balance}`,
+        );
         return balance;
       }
       const balance = await pool.balanceOf(account);
@@ -248,10 +248,14 @@ export class BasisCash {
       return balance;
     } catch (err) {
       if (pool === undefined) {
-        console.error(`Failed to call balanceOf()/subBalanceOf(), pool undefined: ${err.stack}`);
+        console.error(
+          `Failed to call balanceOf()/subBalanceOf(), pool undefined: ${err.stack}`,
+        );
         return BigNumber.from(0);
       }
-      console.error(`Failed to call balanceOf()/subBalanceOf() on pool ${pool.address}: ${err.stack}`);
+      console.error(
+        `Failed to call balanceOf()/subBalanceOf() on pool ${pool.address}: ${err.stack}`,
+      );
       return BigNumber.from(0);
     }
   }
@@ -270,7 +274,14 @@ export class BasisCash {
       if (isMultiPool) {
         const tokenAddress = bank.depositToken.address;
         const gas = await pool.estimateGas.stake(tokenAddress, amount);
-        console.info('BasisCash::stake:estimateGas', gas, 'tokenAddress:', tokenAddress, 'amount:', amount);
+        console.info(
+          'BasisCash::stake:estimateGas',
+          gas,
+          'tokenAddress:',
+          tokenAddress,
+          'amount:',
+          amount,
+        );
         return await pool.stake(tokenAddress, amount, this.gasOptions(gas));
       }
       const gas = await pool.estimateGas.stake(amount);
@@ -302,7 +313,14 @@ export class BasisCash {
     if (isMultiPool) {
       const tokenAddress = bank.depositToken.address;
       const gas = await pool.estimateGas.withdraw(tokenAddress, amount);
-      console.info('BasisCash::unstake:estimateGas', gas, 'tokenAddress:', tokenAddress, 'amount:', amount);
+      console.info(
+        'BasisCash::unstake:estimateGas',
+        gas,
+        'tokenAddress:',
+        tokenAddress,
+        'amount:',
+        amount,
+      );
       return await pool.withdraw(tokenAddress, amount, this.gasOptions(gas));
     }
     const gas = await pool.estimateGas.withdraw(amount);
