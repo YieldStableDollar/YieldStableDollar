@@ -57,12 +57,12 @@ const configurations: { [env: string]: Configuration } = {
 
 export const bankDefinitions: { [contractName: string]: BankInfo } = {
   YSDDAIPool: {
-    name: 'Earn YSD by BUSD',
+    name: 'Earn YSD by DAI',
     contract: 'YSDMultiPool',
-    depositTokenName: 'BUSD',
+    depositTokenName: 'DAI',
     earnTokenName: 'YSD',
     finished: false,
-    sort: 3,
+    sort: 5,
   },
   YSDUSDCPool: {
     name: 'Earn YSD by USDC',
@@ -72,14 +72,14 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     finished: false,
     sort: 4,
   },
-  // YSDSUSDPool: {
-  //   name: 'Earn YSD by sUSD',
-  //   contract: 'YSDSUSDPool',
-  //   depositTokenName: 'SUSD',
-  //   earnTokenName: 'YSD',
-  //   finished: true,
-  //   sort: 5,
-  // },
+  YSDBUSDPool: {
+    name: 'Earn YSD by BUSD',
+    contract: 'YSDMultiPool',
+    depositTokenName: 'BUSD',
+    earnTokenName: 'YSD',
+    finished: false,
+    sort: 3,
+  },
   YSDUSDTPool: {
     name: 'Earn YSD by USDT',
     contract: 'YSDMultiPool',
