@@ -22,7 +22,7 @@ const Home: React.FC = () => {
       basisCash.getShareStat(),
     ]);
     if (Date.now() < config.bondLaunchesAt.getTime()) {
-      bond.priceInDAI = '-';
+      bond.priceInBUSD = '-';
     }
     setStats({ cash, bond, share });
   }, [basisCash, setStats]);

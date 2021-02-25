@@ -26,7 +26,7 @@ const HomeCard: React.FC<HomeCardProps> = ({
   stat,
 }) => {
   const tokenUrl = `${config.etherscanUrl}/address/${address}`;
-  const buyTokenUrl = `https://app.unisave.exchange/#/swap?inputCurrency=${config.externalTokens.DAI[0]}&outputCurrency=${address}`
+  const buyTokenUrl = `https://app.unisave.exchange/#/swap?inputCurrency=${config.externalTokens.BUSD[0]}&outputCurrency=${address}`
   return (
     <Wrapper>
       <StyledCards>
@@ -34,7 +34,7 @@ const HomeCard: React.FC<HomeCardProps> = ({
         <CardHeader>{title}</CardHeader>
         <CardSection>
           {stat ? (
-            <StyledValue style={{padding: '0 22px', backgroundColor: '#000000'}}>{(stat.priceInDAI !== '-' ? '$' : '') + stat.priceInDAI}</StyledValue>
+            <StyledValue style={{padding: '0 22px', backgroundColor: '#000000'}}>{(stat.priceInBUSD !== '-' ? '$' : '') + stat.priceInBUSD}</StyledValue>
           ) : (
             <ValueSkeleton />
           )}

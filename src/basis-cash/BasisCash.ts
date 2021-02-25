@@ -100,7 +100,7 @@ export class BasisCash {
   async getCashStatFromUniswap(): Promise<TokenStat> {
     const supply = await this.YSD.displayedTotalSupply();
     return {
-      priceInDAI: await this.getTokenPriceFromUniswap(this.YSD),
+      priceInBUSD: await this.getTokenPriceFromUniswap(this.YSD),
       totalSupply: supply,
     };
   }
@@ -119,7 +119,7 @@ export class BasisCash {
 
     const totalSupply = await this.YSD.displayedTotalSupply();
     return {
-      priceInDAI: getDisplayBalance(expectedPrice),
+      priceInBUSD: getDisplayBalance(expectedPrice),
       totalSupply,
     };
   }
@@ -141,14 +141,14 @@ export class BasisCash {
     const bondPrice = cashPrice.pow(2).div(decimals);
 
     return {
-      priceInDAI: getDisplayBalance(bondPrice),
+      priceInBUSD: getDisplayBalance(bondPrice),
       totalSupply: await this.YSB.displayedTotalSupply(),
     };
   }
 
   async getShareStat(): Promise<TokenStat> {
     return {
-      priceInDAI: await this.getTokenPriceFromUniswap(this.YSS),
+      priceInBUSD: await this.getTokenPriceFromUniswap(this.YSS),
       totalSupply: await this.YSS.displayedTotalSupply(),
     };
   }
@@ -157,14 +157,14 @@ export class BasisCash {
     await this.provider.ready;
 
     const { chainId } = this.config;
-    const { DAI } = this.config.externalTokens;
-    const dai = new Token(chainId, DAI[0], 18);
+    const { BUSD } = this.config.externalTokens;
+    const dai = new Token(chainId, BUSD[0], 18);
     const token = new Token(chainId, tokenContract.address, 18);
 
     try {
       const daiToToken = await Fetcher.fetchPairData(dai, token, this.provider);
-      const priceInDAI = new Route([daiToToken], token);
-      return priceInDAI.midPrice.toSignificant(3);
+      const priceInBUSD = new Route([daiToToken], token);
+      return priceInBUSD.midPrice.toSignificant(3);
     } catch (err) {
       console.error(`Failed to fetch token price of ${tokenContract.symbol}: ${err}`);
     }

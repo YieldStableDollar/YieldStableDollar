@@ -19,11 +19,11 @@ export interface Bank extends BankInfo {
 }
 
 export type TokenStat = {
-  priceInDAI: string;
+  priceInBUSD: string;
   totalSupply: string;
 };
 
 export type TreasuryAllocationTime = {
   prevAllocation: Date;
   nextAllocation: Date;
-}
+};

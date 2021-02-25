@@ -70,11 +70,11 @@ const LPTokenHelpText: React.FC<{ bank: BankEntity }> = ({ bank }) => {
   let uniswapUrl: string;
   const { Cash, Share } = Config.deployments;
   if (bank.depositTokenName.includes('YSD')) {
-      pairName = 'YSD-DAI pair';
-      uniswapUrl = `${swapPrefix}/add/${Cash.address}/${Config.externalTokens.DAI[0]}`;
+      pairName = 'YSD-BUSD pair';
+      uniswapUrl = `${swapPrefix}/add/${Cash.address}/${Config.externalTokens.BUSD[0]}`;
     } else {
-      pairName = 'YSS-DAI pair';
-      uniswapUrl = `${swapPrefix}/add/${Share.address}/${Config.externalTokens.DAI[0]}`;
+      pairName = 'YSS-BUSD pair';
+      uniswapUrl = `${swapPrefix}/add/${Share.address}/${Config.externalTokens.BUSD[0]}`;
   }
   return (
     <StyledLink href={uniswapUrl} target="_blank">

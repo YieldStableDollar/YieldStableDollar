@@ -60,7 +60,7 @@ const Bond: React.FC = () => {
     [basisCash, addTransaction, cashPrice],
   );
   const cashIsOverpriced = useMemo(() => cashPrice.gt(utils.parseUnits("1", 18)), [cashPrice]);
-  const cashIsUnderPriced = useMemo(() => Number(bondStat?.priceInDAI) < 1.0, [bondStat]);
+  const cashIsUnderPriced = useMemo(() => Number(bondStat?.priceInBUSD) < 1.0, [bondStat]);
 
   const isLaunched = Date.now() >= config.bondLaunchesAt.getTime();
   if (!isLaunched) {
@@ -110,7 +110,7 @@ const Bond: React.FC = () => {
                       ? 'YSD is over $1'
                       : cashIsUnderPriced
                       ? `${Math.floor(
-                          100 / Number(bondStat.priceInDAI) - 100,
+                          100 / Number(bondStat.priceInBUSD) - 100,
                         )}% return when YSD > $1`
                       : '-'
                   }
@@ -128,7 +128,7 @@ const Bond: React.FC = () => {
                 <ExchangeStat
                   tokenName="YSB"
                   description="Current Price: (YSD)^2"
-                  price={bondStat?.priceInDAI || '-'}
+                  price={bondStat?.priceInBUSD || '-'}
                 />
               </StyledStatsWrapper>
               <StyledCardWrapper>
