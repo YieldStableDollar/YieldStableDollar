@@ -11,16 +11,16 @@ const configurations: { [env: string]: Configuration } = {
     externalTokens: {
       DAI: ['0xEC5dCb5Dbf4B114C9d0F65BcCAb49EC54F6A0867', 18],
       // yCRV: ['0xdf5e0e81dff6faf3a7e52ba697820c5e32d806a8', 18],
-      // SUSD: ['0x57Ab1E02fEE23774580C119740129eAC7081e9D3', 18],
+      BUSD: ['0xeD24FC36d5Ee211Ea25A80239Fb8C4Cfd80f12Ee', 18],
       USDC: ['0x64544969ed7ebf5f083679233325356ebe738930', 18],
       USDT: ['0x337610d27c682e347c9cd60bd4b3b107c9d34ddd', 18],
-      'YSD_DAI-UNI-LPv2': ['0x20A2701664482d2756f59c70E60CF165638C1aD4', 18],
-      'YSS_DAI-UNI-LPv2': ['0x92a423Ad73f82e26fCB0fF9Fe259f7d85828dbB8', 18],
+      'YSD_BUSD-UNI-LPv2': ['0xbd6e2C9D4827ee3422527556b06be10fb8B79Eb1', 18],
+      'YSS_BUSD-UNI-LPv2': ['0xDfa8AE6Bd5BFc79E98adC1B7f68c2F86eb6a3920', 18],
     },
-    baseLaunchDate: new Date('2021-01-07T00:00:00Z'), // TODO
-    wholeSiteLaunchesAt: new Date('2021-01-07T00:00:00Z'),
-    bondLaunchesAt: new Date('2021-01-07T00:00:00Z'), // TODO
-    boardroomLaunchesAt: new Date('2021-01-07T00:00:00Z'), // TODO
+    baseLaunchDate: new Date('2021-01-26T11:00:00Z'),
+    wholeSiteLaunchesAt: new Date('2021-01-26T11:00:00Z'),
+    bondLaunchesAt: new Date('2021-01-27T00:00:00Z'),
+    boardroomLaunchesAt: new Date('2021-01-02T00:00:00Z'),
     refreshInterval: 10000,
     gasLimitMultiplier: 1.1,
   },
@@ -33,23 +33,23 @@ const configurations: { [env: string]: Configuration } = {
     externalTokens: {
       DAI: ['0xEC5dCb5Dbf4B114C9d0F65BcCAb49EC54F6A0867', 18],
       // yCRV: ['0xdf5e0e81dff6faf3a7e52ba697820c5e32d806a8', 18],
-      // SUSD: ['0x57Ab1E02fEE23774580C119740129eAC7081e9D3', 18],
+      BUSD: ['0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56', 18],
       USDC: ['0x64544969ed7ebf5f083679233325356ebe738930', 18],
       USDT: ['0x337610d27c682e347c9cd60bd4b3b107c9d34ddd', 18],
-      'YSD_DAI-UNI-LPv2': ['0x4007bE31d732aCd882D25183919830c98DCa52e1', 18],
-      'YSS_DAI-UNI-LPv2': ['0x3EDEB4cB126fD4C809Bd2B31cDb86ab0aCcfC099', 18],
+      'YSD_BUSD-UNI-LPv2': ['0x4007bE31d732aCd882D25183919830c98DCa52e1', 18],
+      'YSS_BUSD-UNI-LPv2': ['0x3EDEB4cB126fD4C809Bd2B31cDb86ab0aCcfC099', 18],
     },
     // Use this for public preview
-    // baseLaunchDate: new Date('2021-01-07T00:00:00Z'), // TODO
+    // baseLaunchDate: new Date('2021-02-26T00:00:00Z'), // TODO
     // wholeSiteLaunchesAt: new Date('2021-01-11T12:00:00Z'),
     // bondLaunchesAt: new Date('2021-01-11T12:00:00Z'), // TODO
     // boardroomLaunchesAt: new Date('2021-01-11T12:00:00Z'), // TODO
 
     // Only for internal preview
-    baseLaunchDate: new Date('2021-01-07T00:00:00Z'), // TODO
-    wholeSiteLaunchesAt: new Date('2021-01-07T00:00:00Z'),
-    bondLaunchesAt: new Date('2021-01-07T00:00:00Z'), // TODO
-    boardroomLaunchesAt: new Date('2021-01-07T00:00:00Z'), // TODO
+    baseLaunchDate: new Date('2021-02-26T11:00:00Z'),
+    wholeSiteLaunchesAt: new Date('2021-02-26T11:00:00Z'),
+    bondLaunchesAt: new Date('2021-02-27T00:00:00Z'),
+    boardroomLaunchesAt: new Date('2021-03-02T00:00:00Z'),
     refreshInterval: 10000,
     gasLimitMultiplier: 1.1,
   },
@@ -57,9 +57,9 @@ const configurations: { [env: string]: Configuration } = {
 
 export const bankDefinitions: { [contractName: string]: BankInfo } = {
   YSDDAIPool: {
-    name: 'Earn YSD by DAI',
+    name: 'Earn YSD by BUSD',
     contract: 'YSDMultiPool',
-    depositTokenName: 'DAI',
+    depositTokenName: 'BUSD',
     earnTokenName: 'YSD',
     finished: false,
     sort: 3,
@@ -96,18 +96,18 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
   //   finished: true,
   //   sort: 7,
   // },
-  DAIYSDLPTokenSharePool: {
+  BUSDYSDLPTokenSharePool: {
     name: 'Earn YSS by YSD-DAI-LP',
-    contract: 'DAIYSDLPTokenSharePool',
-    depositTokenName: 'YSD_DAI-UNI-LPv2',
+    contract: 'BUSDYSDLPTokenSharePool',
+    depositTokenName: 'YSD_BUSD-UNI-LPv2',
     earnTokenName: 'YSS',
     finished: false,
     sort: 1,
   },
-  DAIYSSLPTokenSharePool: {
+  BUSDYSSLPTokenSharePool: {
     name: 'Earn YSS by YSS-DAI-LP',
-    contract: 'DAIYSSLPTokenSharePool',
-    depositTokenName: 'YSS_DAI-UNI-LPv2',
+    contract: 'BUSDYSSLPTokenSharePool',
+    depositTokenName: 'YSS_BUSD-UNI-LPv2',
     earnTokenName: 'YSS',
     finished: false,
     sort: 2,
