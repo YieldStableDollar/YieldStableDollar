@@ -8,6 +8,7 @@ import DAILogo from '../../assets/img/DAI.png';
 import sUSDLogo from '../../assets/img/sUSD.png';
 import USDCLogo from '../../assets/img/USDC.png';
 import USDTLogo from '../../assets/img/USDT.png';
+import BUSDLogo from '../../assets/img/BUSD.png';
 
 const logosBySymbol: {[title: string]: string} = {
   'YSD': ysdLogo,
@@ -18,8 +19,9 @@ const logosBySymbol: {[title: string]: string} = {
   'SUSD': sUSDLogo,
   'USDC': USDCLogo,
   'USDT': USDTLogo,
-  'YSD_DAI-UNI-LPv2': ysdLogo,
-  'YSS_DAI-UNI-LPv2': ysdLogo,
+  'BUSD': BUSDLogo,
+  'YSD_BUSD-UNI-LPv2': ysdLogo,
+  'YSS_BUSD-UNI-LPv2': ysdLogo,
 };
 
 type BasisLogoProps = {
