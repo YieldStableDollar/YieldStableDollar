@@ -70,11 +70,13 @@ const CardHeader = styled.h2`
 
 const StyledCards = styled.div`
   min-width: 200px;
+  height: 100%;
   padding: ${(props) => props.theme.spacing[5]}px ${(props) => props.theme.spacing[3]}px;
   color: ${(props) => props.theme.color.white};
   background-image: url(${pad});
   background-repeat : no-repeat;
   background-size: 100% 100%;
+  box-sizing: border-box;
   align-items: center;
   display: flex;
   flex-direction: column;

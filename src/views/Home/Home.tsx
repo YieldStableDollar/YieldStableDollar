@@ -56,7 +56,6 @@ const Home: React.FC = () => {
           address={cashAddr}
           stat={cash}
         />
-        <Spacer size="lg" />
         <HomeCard
           title="YSS"
           symbol="YSS"
@@ -64,7 +63,6 @@ const Home: React.FC = () => {
           address={shareAddr}
           stat={share}
         />
-        <Spacer size="lg" />
         <HomeCard
           title="YSB"
           symbol="YSB"
@@ -78,12 +76,15 @@ const Home: React.FC = () => {
 };
 
 const CardWrapper = styled.div`
-  display: flex;
+  display: grid;
   justify-content: center;
+  grid-template-columns: repeat(3, 240px);
+  column-gap: 40px;
   width: 100%;
 
   @media (max-width: 768px) {
     width: 100%;
+    display: flex;
     flex-flow: column nowrap;
     align-items: center;
   }

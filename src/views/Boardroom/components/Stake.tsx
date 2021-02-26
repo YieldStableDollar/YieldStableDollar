@@ -92,11 +92,11 @@ const Stake: React.FC = () => {
             </>
           ) : (
             <>
-              <IconButton onClick={onPresentWithdraw}>
+              <IconButton size={40} onClick={onPresentWithdraw}>
                 <RemoveIcon/>
               </IconButton>
               <StyledActionSpacer/>
-              <IconButton onClick={onPresentDeposit}>
+              <IconButton size={40} onClick={onPresentDeposit}>
                 <AddIcon/>
               </IconButton>
             </>
@@ -115,8 +115,10 @@ const StyledCardHeader = styled.div`
 const StyledCardActions = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-top: ${(props) => props.theme.spacing[6]}px;
   width: 100%;
+  min-height: 56px;
   background-image: url(${buttonB});
   background-repeat : no-repeat;
   background-size: 100% 100%;
