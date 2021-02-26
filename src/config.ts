@@ -118,7 +118,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
   //   sort: 7,
   // },
   BUSDYSDLPTokenSharePool: {
-    name: 'Earn YSS by YSD-DAI-LP',
+    name: 'Earn YSS by YSD-BUSD-LP',
     contract: 'BUSDYSDLPTokenSharePool',
     depositTokenName: 'YSD_BUSD-UNI-LPv2',
     earnTokenName: 'YSS',
@@ -126,7 +126,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     sort: 1,
   },
   BUSDYSSLPTokenSharePool: {
-    name: 'Earn YSS by YSS-DAI-LP',
+    name: 'Earn YSS by YSS-BUSD-LP',
     contract: 'BUSDYSSLPTokenSharePool',
     depositTokenName: 'YSS_BUSD-UNI-LPv2',
     earnTokenName: 'YSS',
