@@ -63,7 +63,7 @@ const ExchangeCard: React.FC<ExchangeCardProps> = ({
           <StyledCardIcon>
             <TokenSymbol symbol={fromToken.symbol} size={54}/>
           </StyledCardIcon>
-          <Label text={fromTokenName} variant="normal"/>
+          <Label text={fromTokenName} variant="normal" center />
         </StyledToken>
         <StyledExchangeArrow>
           <FontAwesomeIcon icon={faArrowRight}/>
@@ -72,7 +72,7 @@ const ExchangeCard: React.FC<ExchangeCardProps> = ({
           <StyledCardIcon>
             <TokenSymbol symbol={toToken.symbol} size={54}/>
           </StyledCardIcon>
-          <Label text={toTokenName} variant="normal"/>
+          <Label text={toTokenName} variant="normal" center />
         </StyledToken>
       </StyledExchanger>
       <StyledDesc>{priceDesc}</StyledDesc>
@@ -154,7 +154,7 @@ const StyledCardContentInner = styled.div`
   flex: 1;
   flex-direction: column;
   justify-content: space-between;
-  padding: ${(props) => props.theme.spacing[6]}px ${(props) => props.theme.spacing[4]}px;
+  padding: ${(props) => props.theme.spacing[7]}px ${(props) => props.theme.spacing[4]}px ${(props) => props.theme.spacing[6]}px;
   background-image: url(${pad});
   background-repeat : no-repeat;
   background-size: 100% 100%;

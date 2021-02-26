@@ -43,10 +43,9 @@ const BankCards: React.FC = () => {
         </StyledInactiveNoticeContainer>
       )}
       <StyledRow>
-        {activeBanks.map((bank, i) => (
+        {activeBanks.map((bank) => (
           <React.Fragment key={bank.name}>
             <BankCard bank={bank} />
-            {i < activeBanks.length - 1 && <StyledSpacer />}
           </React.Fragment>
         ))}
       </StyledRow>
@@ -58,7 +57,6 @@ const BankCards: React.FC = () => {
               {bankRow.map((bank, j) => (
                 <React.Fragment key={j}>
                   <BankCard bank={bank} />
-                  {j < bankRow.length - 1 && <StyledSpacer />}
                 </React.Fragment>
               ))}
             </StyledRow>
@@ -130,20 +128,23 @@ const StyledCards = styled.div`
 `;
 
 const StyledRow = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-bottom: ${(props) => props.theme.spacing[4]}px;
-  flex-flow: row wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
   @media (max-width: 768px) {
     width: 100%;
+    display: flex;
+    justify-content: center;
     flex-flow: column nowrap;
     align-items: center;
+    margin-bottom: ${(props) => props.theme.spacing[4]}px;
   }
 `;
 
 const StyledCardWrapper = styled.div`
   display: flex;
   width: calc((900px - ${(props) => props.theme.spacing[4]}px * 2) / 3);
+  min-height: 400px;
   position: relative;
 `;
 
@@ -160,16 +161,19 @@ const StyledContent = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  height: 100%;
   padding: ${(props) => props.theme.spacing[4]}px;
   background-image: url(${pad});
   background-repeat : no-repeat;
   background-size: 100% 100%;
+  box-sizing: border-box;
 `;
 
-const StyledSpacer = styled.div`
-  height: ${(props) => props.theme.spacing[4]}px;
-  width: ${(props) => props.theme.spacing[4]}px;
-`;
+// const StyledSpacer = styled.div`
+//   height: ${(props) => props.theme.spacing[4]}px;
+//   width: ${(props) => props.theme.spacing[4]}px;
+// `;
 
 const StyledDetails = styled.div`
   margin-bottom: ${(props) => props.theme.spacing[6]}px;
@@ -182,6 +186,9 @@ const Stylebtndiv = styled.div`
   background-image: url(${buttonB});
   background-repeat : no-repeat;
   background-size: 100% 100%;
+  align-self: center;
+  position: absolute;
+  bottom: 60px;
 `;
 
 const StyledDetail = styled.div`
