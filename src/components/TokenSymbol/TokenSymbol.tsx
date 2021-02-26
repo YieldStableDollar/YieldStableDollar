@@ -12,8 +12,8 @@ import BUSDLogo from '../../assets/img/BUSD.png';
 
 const logosBySymbol: {[title: string]: string} = {
   'YSD': ysdLogo,
-  'YSB': yssLogo,
-  'YSS': ysbLogo,
+  'YSB': ysbLogo,
+  'YSS': yssLogo,
   'yCRV': yCRVLogo,
   'DAI': DAILogo,
   'SUSD': sUSDLogo,
