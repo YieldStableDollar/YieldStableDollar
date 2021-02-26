@@ -89,7 +89,7 @@ const BankCard: React.FC<BankCardProps> = ({ bank }) => {
         <StyledTitle>{bank.name}</StyledTitle>
         <StyledDetails>
           <StyledDetail>Deposit {bank.depositTokenName.toUpperCase()}</StyledDetail>
-          <StyledDetail>Earn {`Basis ${bank.earnTokenName}`}</StyledDetail>
+          <StyledDetail>Earn {`${bank.earnTokenName}`}</StyledDetail>
         </StyledDetails>
         <Stylebtndiv>
           <Button size="sm" variant="default" text="Select" to={`/bank/${bank.bankDefinitionName}`}/>

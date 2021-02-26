@@ -50,7 +50,7 @@ const Stake: React.FC = () => {
         onStake(value);
         onDismissDeposit();
       }}
-      tokenName={'Basis Share'}
+      tokenName={'YSD Share'}
     />,
   );
 
@@ -61,7 +61,7 @@ const Stake: React.FC = () => {
         onWithdraw(value);
         onDismissWithdraw();
       }}
-      tokenName={'Basis Share'}
+      tokenName={'YSD Share'}
     />,
   );
 
@@ -73,14 +73,14 @@ const Stake: React.FC = () => {
             <TokenSymbol symbol="YSS"/>
           </CardIcon>
           <Value value={getDisplayBalance(stakedBalance)}/>
-          <Label text="Basis Share Staked"/>
+          <Label text="YSD Share Staked"/>
         </StyledCardHeader>
         <StyledCardActions>
           {!isOldBoardroomMember && approveStatus !== ApprovalState.APPROVED ? (
             <Button
               disabled={approveStatus !== ApprovalState.NOT_APPROVED}
               onClick={approve}
-              text="Approve Basis Share"
+              text="Approve YSD Share"
             />
           ) : isOldBoardroomMember ? (
             <>

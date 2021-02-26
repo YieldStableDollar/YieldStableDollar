@@ -82,7 +82,7 @@ const Boardroom: React.FC = () => {
             titleLeft={JointheBoardroom}
             titleRight={line}
             title="Join the Boardroom"
-            subtitle="Deposit Basis Shares and earn inflationary rewards"
+            subtitle="Deposit YSD Shares and earn inflationary rewards"
           />
           <LaunchCountdown
             deadline={config.boardroomLaunchesAt}
@@ -104,7 +104,7 @@ const Boardroom: React.FC = () => {
               titleLeft={JointheBoardroom}
               titleRight={line}
               title="Join the Boardroom"
-              subtitle="Deposit Basis Shares and earn inflationary rewards"
+              subtitle="Deposit YSD Shares and earn inflationary rewards"
             />
             {migrateNotice}
             <StyledHeader>
