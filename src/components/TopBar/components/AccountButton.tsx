@@ -24,7 +24,7 @@ const AccountButton: React.FC<AccountButtonProps> = (props) => {
         <Button
           onClick={() => connect('injected')}
           size="sm"
-          text="Unlock Wallet"
+          text="I know it's BETA and Unlock Wallet"
           variant={'tertiary'}
         />
       ) : (

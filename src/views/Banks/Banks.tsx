@@ -11,6 +11,7 @@ import bankimg from '../../assets/img/bank.png';
 import PickaBank from '../../assets/img/PickaBank.png';
 import line from '../../assets/img/line.png';
 import buttonA from '../../assets/img/buttonA.png';
+import BetaWarning from '../../components/BetaWarning';
 
 const Banks: React.FC = () => {
   const { path } = useRouteMatch();
@@ -30,11 +31,14 @@ const Banks: React.FC = () => {
           {!!account ? (
             <BankCards />
           ) : (
-            <Center>
-              <StyledBtn>
-                <Button variant={'tertiary'} onClick={() => connect('injected')} text="Unlock Wallet"/>
-              </StyledBtn>
-            </Center>
+            <>
+              <BetaWarning/>
+              <Center>
+                <StyledBtn>
+                  <Button variant={'tertiary'} onClick={() => connect('injected')} text="Unlock Wallet"/>
+                </StyledBtn>
+              </Center>
+            </>
           )}
         </Route>
         <Route path={`${path}/:bankId`}>

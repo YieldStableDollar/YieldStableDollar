@@ -10,6 +10,7 @@ import config from '../../config';
 import cyberchip from '../../assets/img/cyberchip.png';
 import WelcometoYSD from '../../assets/img/WelcometoYSD.png';
 import line from '../../assets/img/line.png';
+import BetaWarning from '../../components/BetaWarning';
 
 const Home: React.FC = () => {
   const basisCash = useBasisCash();
@@ -47,6 +48,7 @@ const Home: React.FC = () => {
         title="Welcome to Stable Dollar!"
       />
       <Spacer size="md" />
+      <BetaWarning />
       <CardWrapper>
         <HomeCard
           title="YSD"

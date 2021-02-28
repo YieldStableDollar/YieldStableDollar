@@ -17,6 +17,7 @@ import bankimg from '../../assets/img/bank.png';
 import PickaBank from '../../assets/img/PickaBank.png';
 import line from '../../assets/img/line.png';
 import buttonA from '../../assets/img/buttonA.png';
+import BetaWarning from '../../components/BetaWarning';
 
 const Bank: React.FC = () => {
   useEffect(() => window.scrollTo(0, 0));
@@ -100,11 +101,14 @@ const BankNotFound = () => {
 const UnlockWallet = () => {
   const { connect } = useWallet();
   return (
+    <>
+    <BetaWarning />
     <Center>
       <StyledBtn>
         <Button variant={'tertiary'} onClick={() => connect('injected')} text="Unlock Wallet"/>
       </StyledBtn>
-    </Center>
+      </Center>
+    </>
   );
 };
 
