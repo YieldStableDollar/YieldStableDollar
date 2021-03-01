@@ -42,7 +42,7 @@ const StyledPageHeader = styled.div`
   margin: 0 auto;
   @media (max-width: 768px) {
     padding-bottom: ${props => props.theme.spacing[5]}px;
-    padding-top: ${props => props.theme.spacing[7]}px;
+    padding-top: ${props => props.theme.spacing[5]}px;
   }
 `
 

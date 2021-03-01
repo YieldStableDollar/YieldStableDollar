@@ -37,6 +37,9 @@ const StyledTopBarInner = styled.div`
   max-width: ${props => props.theme.siteWidth}px;
   width: 100%;
   flex-wrap: wrap;
+  @media (max-width: 768px) {
+    height: auto;
+  }
 `
 
 const StyledLogoWrapper = styled.div`
