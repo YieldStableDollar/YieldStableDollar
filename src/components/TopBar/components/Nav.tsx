@@ -16,6 +16,12 @@ const Nav: React.FC = () => {
 const StyledNav = styled.nav`
   align-items: center;
   display: flex;
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    justify-content: space-around;
+  }
 `
 
 const StyledLink = styled(NavLink)`
@@ -29,6 +35,10 @@ const StyledLink = styled(NavLink)`
   }
   &.active {
     color: ${props => props.theme.color.primary.main};
+  }
+  @media (max-width: 768px) {
+    padding-left: 0;
+    padding-right: 0;
   }
 `
 

@@ -13,18 +13,14 @@ const TopBar: React.FC = () => {
     <StyledTopBar>
       <Container size="lg">
         <StyledTopBarInner>
-          <div style={{ flex: 1 }}>
+          <StyledLogoWrapper>
             <Logo />
-          </div>
+          </StyledLogoWrapper>
           <Nav />
-          <div style={{
-            flex: 1,
-            display: 'flex',
-            justifyContent: 'flex-end'
-          }}>
+          <StyledAccountWrapper>
             <TxButton />
             <AccountButton />
-          </div>
+          </StyledAccountWrapper>
         </StyledTopBarInner>
       </Container>
     </StyledTopBar>
@@ -41,6 +37,22 @@ const StyledTopBarInner = styled.div`
   max-width: ${props => props.theme.siteWidth}px;
   width: 100%;
   flex-wrap: wrap;
+`
+
+const StyledLogoWrapper = styled.div`
+  flex: 1;
+  @media (max-width: 768px) {
+    margin-top: 16px;
+  }
+`
+
+const StyledAccountWrapper = styled.div`
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
 `
 
 export default TopBar

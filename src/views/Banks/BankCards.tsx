@@ -168,6 +168,9 @@ const StyledContent = styled.div`
   background-repeat : no-repeat;
   background-size: 100% 100%;
   box-sizing: border-box;
+  @media (max-width: 768px) {
+    min-height: 400px;
+  }
 `;
 
 // const StyledSpacer = styled.div`

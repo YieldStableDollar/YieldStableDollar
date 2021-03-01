@@ -20,13 +20,13 @@ const PageHeader: React.FC<PageHeaderProps> = ({ icon, subtitle, title,titleLeft
             <RealStyledSubtitle>{subtitle}</RealStyledSubtitle>
           </>
           : <>
-            <StyledTitle>
-                <img src={titleLeft} style={{ height: '25px' }} alt={title} />
-                <img src={titleRight} style={{ height: '25px' }} alt={subtitle} />
+              <StyledTitle>
+                <StyledTitleImage src={titleLeft} alt={title} />
+                <StyledTitleImage src={titleRight} alt={subtitle} />
               </StyledTitle>
             <StyledSubtitle>{subtitle}</StyledSubtitle>
           </>
-       }
+      }
     </StyledPageHeader>
   )
 }
@@ -40,11 +40,19 @@ const StyledPageHeader = styled.div`
   max-width: 900px;
   width: 100%;
   margin: 0 auto;
+  @media (max-width: 768px) {
+    padding-bottom: ${props => props.theme.spacing[5]}px;
+    padding-top: ${props => props.theme.spacing[7]}px;
+  }
 `
 
 const StyledIcon = styled.img`
   height: 149px;
   margin-bottom: 59px;
+  @media (max-width: 768px) {
+    height: 100px;
+    margin-bottom: 32px;
+  }
 `
 
 const StyledTitle = styled.div`
@@ -53,6 +61,17 @@ const StyledTitle = styled.div`
   flex-direction: row;
   align-items: flex-start;
   padding-bottom: 15px;
+  @media (max-width: 768px) {
+    width: 100%;
+    overflow: hidden;
+  }
+`
+
+const StyledTitleImage = styled.img`
+  height: 25px;
+  @media (max-width: 768px) {
+    height: 16px;
+  }
 `
 
 const RealStyledTitle = styled.h1`
@@ -80,6 +99,9 @@ const StyledSubtitle = styled.h3`
   margin: 0;
   padding: 0;
   text-align: left;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `
 
 export default PageHeader

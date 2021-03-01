@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import Page from '../../components/Page';
 import PageHeader from '../../components/PageHeader';
-import Spacer from '../../components/Spacer';
+// import Spacer from '../../components/Spacer';
 import HomeCard from './components/HomeCard';
 import { OverviewData } from './types';
 import useBasisCash from '../../hooks/useBasisCash';
@@ -47,7 +47,7 @@ const Home: React.FC = () => {
         subtitle="Buy, sell, and provide liquidity for Yield Stable Dollar and Yield Stable Shares on Unisave"
         title="Welcome to Stable Dollar!"
       />
-      <Spacer size="md" />
+      {/* <Spacer size="md" /> */}
       <BetaWarning />
       <CardWrapper>
         <HomeCard

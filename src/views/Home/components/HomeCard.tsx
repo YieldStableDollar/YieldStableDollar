@@ -59,6 +59,8 @@ const HomeCard: React.FC<HomeCardProps> = ({
 const Wrapper = styled.div`
   @media (max-width: 768px) {
     margin-top: ${(props) => props.theme.spacing[4]}px;
+    min-width: 240px;
+    min-height: 360px;
   }
 `;
 
@@ -82,6 +84,7 @@ const StyledCards = styled.div`
   flex-direction: column;
   @media (max-width: 768px) {
     width: 100%;
+    min-height: 360px;
   }
 `;
 

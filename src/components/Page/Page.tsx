@@ -20,8 +20,11 @@ const StyledMain = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - ${props => props.theme.topBarSize * 2}px);
+  min-height: calc(100vh - ${props => props.theme.topBarSize * 2}px - ${props => props.theme.spacing[5]}px);
   padding-bottom: ${props => props.theme.spacing[5]}px;
+  @media (max-width: 768px) {
+    margin: 0 15px;
+  }
 `
 
 export default Page
