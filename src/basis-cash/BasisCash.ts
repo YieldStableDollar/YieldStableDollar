@@ -158,8 +158,8 @@ export class BasisCash {
 
     const { chainId } = this.config;
     const { USDT } = this.config.externalTokens;
-    const dai = new Token(chainId, USDT[0], 18);
-    const token = new Token(chainId, tokenContract.address, 18);
+    const dai = new Token(chainId, USDT[0], USDT[1]);
+    const token = new Token(chainId, tokenContract.address, USDT[1]);
 
     try {
       const daiToToken = await Fetcher.fetchPairData(dai, token, this.provider);
@@ -269,10 +269,16 @@ export class BasisCash {
   async stake(bank: Bank, amount: BigNumber): Promise<TransactionResponse> {
     const pool = this.contracts[bank.contract];
     console.info('BasisCash::stake:pool', pool);
+    console.info('bank.contract', bank.contract)
     const isMultiPool = bank && bank.contract === 'YSDMultiPool';
     try {
       if (isMultiPool) {
+        console.info('isMultiPool')
         const tokenAddress = bank.depositToken.address;
+        console.info(
+          'BasisCash::stake:depositToken',
+          tokenAddress,
+        );
         const gas = await pool.estimateGas.stake(tokenAddress, amount);
         console.info(
           'BasisCash::stake:estimateGas',
@@ -293,11 +299,12 @@ export class BasisCash {
           console.error('Error while staking, reason:' + callError.reason);
           throw callError;
         });
+      } else {
+        pool.callStatic.stake(amount).then((callError) => {
+          console.error('Error while staking, reason:' + callError.reason);
+          throw callError;
+        });
       }
-      pool.callStatic.stake(amount).then((callError) => {
-        console.error('Error while staking, reason:' + callError.reason);
-        throw callError;
-      });
     }
   }
 
