@@ -59,7 +59,7 @@ const Bond: React.FC = () => {
     },
     [basisCash, addTransaction, cashPrice],
   );
-  const cashIsOverpriced = useMemo(() => cashPrice.gt(utils.parseUnits("1", 18)), [cashPrice]);
+  const cashIsOverpriced = useMemo(() => cashPrice.gt(utils.parseUnits("1", 6)), [cashPrice]);
   const cashIsUnderPriced = useMemo(() => Number(bondStat?.priceInBUSD) < 1.0, [bondStat]);
 
   const isLaunched = Date.now() >= config.bondLaunchesAt.getTime();
@@ -122,7 +122,7 @@ const Bond: React.FC = () => {
                 <ExchangeStat
                   tokenName="YSC"
                   description="Base Price (Last-Day TWAP)"
-                  price={getDisplayBalance(cashPrice, 18, 2)}
+                  price={getDisplayBalance(cashPrice, 6, 2)}
                 />
                 <Spacer size="md" />
                 <ExchangeStat

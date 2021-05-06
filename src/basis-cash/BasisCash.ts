@@ -119,7 +119,7 @@ export class BasisCash {
 
     const totalSupply = await this.YSD.displayedTotalSupply();
     return {
-      priceInBUSD: getDisplayBalance(expectedPrice),
+      priceInBUSD: getDisplayBalance(expectedPrice, 6),
       totalSupply,
     };
   }
@@ -141,7 +141,7 @@ export class BasisCash {
     const bondPrice = cashPrice.pow(2).div(decimals);
 
     return {
-      priceInBUSD: getDisplayBalance(bondPrice),
+      priceInBUSD: getDisplayBalance(bondPrice, 6),
       totalSupply: await this.YSB.displayedTotalSupply(),
     };
   }
@@ -159,7 +159,7 @@ export class BasisCash {
     const { chainId } = this.config;
     const { USDT } = this.config.externalTokens;
     const dai = new Token(chainId, USDT[0], USDT[1]);
-    const token = new Token(chainId, tokenContract.address, USDT[1]);
+    const token = new Token(chainId, tokenContract.address, 18);
 
     try {
       const daiToToken = await Fetcher.fetchPairData(dai, token, this.provider);
