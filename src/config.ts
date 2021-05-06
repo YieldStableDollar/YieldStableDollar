@@ -1,19 +1,19 @@
-import { ChainId } from '@lychees/uniscam-sdk';
+// import { ChainId } from '@lychees/uniscam-sdk';
 import { Configuration } from './basis-cash/config';
 import { BankInfo } from './basis-cash';
 
 const configurations: { [env: string]: Configuration } = {
   development: {
-    chainId: ChainId.BSC_TESTNET,
-    etherscanUrl: 'https://testnet.bscscan.com',
-    defaultProvider: 'https://data-seed-prebsc-1-s1.binance.org:8545',
-    deployments: require('./basis-cash/deployments/deployments.bsc_testnet.json'),
+    chainId: 170,
+    etherscanUrl: 'https://testnet.hscscan.com',
+    defaultProvider: 'https://http-testnet.hoosmartchain.com',
+    deployments: require('./basis-cash/deployments/deployments.hoo_testnet.json'),
     externalTokens: {
-      DAI: ['0xEC5dCb5Dbf4B114C9d0F65BcCAb49EC54F6A0867', 18],
+      // DAI: ['0xEC5dCb5Dbf4B114C9d0F65BcCAb49EC54F6A0867', 18],
       // yCRV: ['0xdf5e0e81dff6faf3a7e52ba697820c5e32d806a8', 18],
-      BUSD: ['0xeD24FC36d5Ee211Ea25A80239Fb8C4Cfd80f12Ee', 18],
-      USDC: ['0x64544969ed7ebf5f083679233325356ebe738930', 18],
-      USDT: ['0x337610d27c682e347c9cd60bd4b3b107c9d34ddd', 18],
+      // BUSD: ['0xeD24FC36d5Ee211Ea25A80239Fb8C4Cfd80f12Ee', 18],
+      // USDC: ['0x64544969ed7ebf5f083679233325356ebe738930', 18],
+      USDT: ['0xd3B564c88dAd592d857cF2155feF24B287806A48', 18],
       'YSD_BUSD-UNI-LPv2': ['0xD678596Dcb6878ceed88852c9db08A368ec3DD09', 18],
       'YSS_BUSD-UNI-LPv2': ['0x4B7eB05FA20560C9B152aC4b325485253f6A6009', 18],
     },
@@ -26,30 +26,23 @@ const configurations: { [env: string]: Configuration } = {
   },
   // Ready
   production: {
-    chainId: ChainId.BSC_MAINNET,
-    etherscanUrl: 'https://www.bscscan.com',
-    defaultProvider: 'https://bsc-dataseed.binance.org/',
-    deployments: require('./basis-cash/deployments/deployments.bsc_mainnet.json'),
+    chainId: 170,
+    etherscanUrl: 'https://testnet.hscscan.com',
+    defaultProvider: 'https://http-testnet.hoosmartchain.com',
+    deployments: require('./basis-cash/deployments/deployments.hoo_testnet.json'),
     externalTokens: {
-      DAI: ['0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3', 18],
+      // DAI: ['0xEC5dCb5Dbf4B114C9d0F65BcCAb49EC54F6A0867', 18],
       // yCRV: ['0xdf5e0e81dff6faf3a7e52ba697820c5e32d806a8', 18],
-      BUSD: ['0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56', 18],
-      USDC: ['0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d', 18],
-      USDT: ['0x55d398326f99059fF775485246999027B3197955', 18],
-      'YSD_BUSD-UNI-LPv2': ['0x1e1305e2d2EF10bc1A4473FCbc58cC5ddd13890b', 18],
-      'YSS_BUSD-UNI-LPv2': ['0x22E592c1Bf568C57B225a8E27419CDC0b18aB207', 18],
+      // BUSD: ['0xeD24FC36d5Ee211Ea25A80239Fb8C4Cfd80f12Ee', 18],
+      // USDC: ['0x64544969ed7ebf5f083679233325356ebe738930', 18],
+      USDT: ['0xd3B564c88dAd592d857cF2155feF24B287806A48', 18],
+      'YSD_BUSD-UNI-LPv2': ['0xD678596Dcb6878ceed88852c9db08A368ec3DD09', 18],
+      'YSS_BUSD-UNI-LPv2': ['0x4B7eB05FA20560C9B152aC4b325485253f6A6009', 18],
     },
-    // Use this for public preview
-    // baseLaunchDate: new Date('2021-02-26T00:00:00Z'), // TODO
-    // wholeSiteLaunchesAt: new Date('2021-01-11T12:00:00Z'),
-    // bondLaunchesAt: new Date('2021-01-11T12:00:00Z'), // TODO
-    // boardroomLaunchesAt: new Date('2021-01-11T12:00:00Z'), // TODO
-
-    // Only for internal preview
-    baseLaunchDate: new Date('2021-02-26T11:00:00Z'),
-    wholeSiteLaunchesAt: new Date('2021-02-26T11:00:00Z'),
-    bondLaunchesAt: new Date('2021-02-27T00:00:00Z'),
-    boardroomLaunchesAt: new Date('2021-03-02T00:00:00Z'),
+    baseLaunchDate: new Date('2021-01-26T11:00:00Z'),
+    wholeSiteLaunchesAt: new Date('2021-01-26T11:00:00Z'),
+    bondLaunchesAt: new Date('2021-01-27T00:00:00Z'),
+    boardroomLaunchesAt: new Date('2021-01-02T00:00:00Z'),
     refreshInterval: 10000,
     gasLimitMultiplier: 1.1,
   },

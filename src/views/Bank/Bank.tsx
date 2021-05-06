@@ -72,10 +72,10 @@ const LPTokenHelpText: React.FC<{ bank: BankEntity }> = ({ bank }) => {
   const { Cash, Share } = Config.deployments;
   if (bank.depositTokenName.includes('YSD')) {
       pairName = 'YSD-BUSD pair';
-      uniswapUrl = `${swapPrefix}/add/${Cash.address}/${Config.externalTokens.BUSD[0]}`;
+      uniswapUrl = `${swapPrefix}/add/${Cash.address}/${Config.externalTokens.USDT[0]}`;
     } else {
       pairName = 'YSS-BUSD pair';
-      uniswapUrl = `${swapPrefix}/add/${Share.address}/${Config.externalTokens.BUSD[0]}`;
+      uniswapUrl = `${swapPrefix}/add/${Share.address}/${Config.externalTokens.USDT[0]}`;
   }
   return (
     <StyledLink href={uniswapUrl} target="_blank">
