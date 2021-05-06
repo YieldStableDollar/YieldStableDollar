@@ -157,8 +157,8 @@ export class BasisCash {
     await this.provider.ready;
 
     const { chainId } = this.config;
-    const { BUSD } = this.config.externalTokens;
-    const dai = new Token(chainId, BUSD[0], 18);
+    const { USDT } = this.config.externalTokens;
+    const dai = new Token(chainId, USDT[0], 18);
     const token = new Token(chainId, tokenContract.address, 18);
 
     try {
