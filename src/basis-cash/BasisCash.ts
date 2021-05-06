@@ -1,4 +1,4 @@
-import { Fetcher, Route, Token } from '@lychees/uniscam-sdk';
+import { Fetcher, Route, Token } from '@heshiswap/sdk';
 import { Configuration } from './config';
 import { Bank, ContractName, TokenStat, TreasuryAllocationTime } from './types';
 import { BigNumber, Contract, ethers, Overrides, utils } from 'ethers';

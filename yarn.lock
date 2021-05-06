@@ -1859,6 +1859,18 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
+"@heshiswap/sdk@^1.0.0-dev.6":
+  version "1.0.0-dev.6"
+  resolved "https://registry.yarnpkg.com/@heshiswap/sdk/-/sdk-1.0.0-dev.6.tgz#c60c4db6c8cc2b0ce5a83f794cc48c0174bbdb45"
+  integrity sha512-/vvSsBdOz5YzIFgp1jmxtFdG4SnzLRwweDT/5cDFiLprcJv7V2PiAtxhM73X7USK9G/2+bNrQBoChJejwF1e/Q==
+  dependencies:
+    big.js "^5.2.2"
+    decimal.js-light "^2.5.0"
+    jsbi "^3.1.1"
+    tiny-invariant "^1.1.0"
+    tiny-warning "^1.0.3"
+    toformat "^2.0.0"
+
 "@jest/console@^24.7.1", "@jest/console@^24.9.0":
   version "24.9.0"
   resolved "https://registry.yarnpkg.com/@jest/console/-/console-24.9.0.tgz#79b1bc06fb74a8cfb01cbdedf945584b1b9707f0"
@@ -2016,19 +2028,6 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
-
-"@lychees/uniscam-sdk@3.0.30-test.2":
-  version "3.0.30-test.2"
-  resolved "https://registry.yarnpkg.com/@lychees/uniscam-sdk/-/uniscam-sdk-3.0.30-test.2.tgz#6cd0b1e2a8f867d8ae8bcfb68440698de16586b8"
-  integrity sha512-wPzf6noek4AECAgyYz8FOHD0camx1WBzoCLAUHvhGOMtsTAK8CbCngyulOF7/Fo+a16WeuTzPVzI5DH0FDnlAQ==
-  dependencies:
-    "@uniswap/v2-core" "^1.0.0"
-    big.js "^5.2.2"
-    decimal.js-light "^2.5.0"
-    jsbi "^3.1.1"
-    tiny-invariant "^1.1.0"
-    tiny-warning "^1.0.3"
-    toformat "^2.0.0"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
@@ -2680,11 +2679,6 @@
     lodash "^4.17.15"
     semver "^6.3.0"
     tsutils "^3.17.1"
-
-"@uniswap/v2-core@^1.0.0":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@uniswap/v2-core/-/v2-core-1.0.1.tgz#af8f508bf183204779938969e2e54043e147d425"
-  integrity sha512-MtybtkUPSyysqLY2U210NBDeCHX+ltHt3oADGdjqoThZaFRDKwM6k1Nb3F0A3hk5hwuQvytFWhrWHOEq6nVJ8Q==
 
 "@walletconnect/client@^1.1.0":
   version "1.1.0"

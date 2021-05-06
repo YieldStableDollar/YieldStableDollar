@@ -1,10 +1,10 @@
-// import { ChainId } from '@lychees/uniscam-sdk';
+import { ChainId } from '@heshiswap/sdk';
 import { Configuration } from './basis-cash/config';
 import { BankInfo } from './basis-cash';
 
 const configurations: { [env: string]: Configuration } = {
   development: {
-    chainId: 170,
+    chainId: ChainId.TESTNET,
     etherscanUrl: 'https://testnet.hscscan.com',
     defaultProvider: 'https://http-testnet.hoosmartchain.com',
     deployments: require('./basis-cash/deployments/deployments.hoo_testnet.json'),
@@ -26,7 +26,7 @@ const configurations: { [env: string]: Configuration } = {
   },
   // Ready
   production: {
-    chainId: 170,
+    chainId: ChainId.TESTNET,
     etherscanUrl: 'https://testnet.hscscan.com',
     defaultProvider: 'https://http-testnet.hoosmartchain.com',
     deployments: require('./basis-cash/deployments/deployments.hoo_testnet.json'),
