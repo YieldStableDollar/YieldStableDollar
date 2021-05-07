@@ -26,7 +26,7 @@ const HomeCard: React.FC<HomeCardProps> = ({
   stat,
 }) => {
   const tokenUrl = `${config.etherscanUrl}/address/${address}`;
-  const buyTokenUrl = `https://app.unisave.exchange/#/swap?inputCurrency=${config.externalTokens.USDT[0]}&outputCurrency=${address}`
+  const buyTokenUrl = `https://www.heshiswap.com/#/swap?inputCurrency=${config.externalTokens.USDT[0]}&outputCurrency=${address}`
   return (
     <Wrapper>
       <StyledCards>
@@ -48,7 +48,7 @@ const HomeCard: React.FC<HomeCardProps> = ({
           </StyledSupplyLabel>
           { symbol !== 'YSB' && 
             <StyledBuyLabel href={buyTokenUrl} target="_blank" color="#efd40d">
-            BUY {symbol} on Unisave
+            BUY {symbol} on HeshiSwap
           </StyledBuyLabel>}
         </CardSection>
       </StyledCards>

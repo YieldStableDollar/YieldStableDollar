@@ -67,7 +67,7 @@ const Bank: React.FC = () => {
 
 const LPTokenHelpText: React.FC<{ bank: BankEntity }> = ({ bank }) => {
   let pairName: string;
-  let swapPrefix = 'https://app.unisave.exchange/#'
+  let swapPrefix = 'https://www.heshiswap.com/#'
   let uniswapUrl: string;
   const { Cash, Share } = Config.deployments;
   if (bank.depositTokenName.includes('YSD')) {
@@ -79,7 +79,7 @@ const LPTokenHelpText: React.FC<{ bank: BankEntity }> = ({ bank }) => {
   }
   return (
     <StyledLink href={uniswapUrl} target="_blank">
-      {`🐷  Provide liquidity to ${pairName} on Unisave 🐷`}
+      {`🐷  Provide liquidity to ${pairName} on HeshiSwap 🐷`}
     </StyledLink>
   );
 };

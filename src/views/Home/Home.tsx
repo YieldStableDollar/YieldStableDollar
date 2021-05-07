@@ -44,7 +44,7 @@ const Home: React.FC = () => {
         icon={cyberchip}
         titleLeft={WelcometoYSD}
         titleRight={line}
-        subtitle="Buy, sell, and provide liquidity for Yield Stable Dollar and Yield Stable Shares on Unisave"
+        subtitle="Buy, sell, and provide liquidity for Yield Stable Dollar and Yield Stable Shares on HeshiSwap"
         title="Welcome to Stable Dollar!"
       />
       {/* <Spacer size="md" /> */}
