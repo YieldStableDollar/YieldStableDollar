@@ -135,7 +135,7 @@ export class BasisCash {
   }
 
   async getBondStat(): Promise<TokenStat> {
-    const decimals = BigNumber.from(10).pow(18);
+    const decimals = BigNumber.from(10).pow(6);
 
     const cashPrice: BigNumber = await this.getBondOraclePriceInLastTWAP();
     const bondPrice = cashPrice.pow(2).div(decimals);
