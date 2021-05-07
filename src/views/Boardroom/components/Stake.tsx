@@ -72,7 +72,7 @@ const Stake: React.FC = () => {
           <CardIcon>
             <TokenSymbol symbol="YSS"/>
           </CardIcon>
-          <Value value={getDisplayBalance(stakedBalance)}/>
+          <Value value={getDisplayBalance(stakedBalance, 18, 4)}/>
           <Label text="YSD Share Staked"/>
         </StyledCardHeader>
         <StyledCardActions>

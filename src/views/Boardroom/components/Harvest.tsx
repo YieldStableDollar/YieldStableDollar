@@ -24,7 +24,7 @@ const Harvest: React.FC = () => {
           <CardIcon>
             <TokenSymbol symbol="YSD"/>
           </CardIcon>
-          <Value value={getDisplayBalance(earnings)}/>
+          <Value value={getDisplayBalance(earnings, 18, 4)}/>
           <Label variant='normal' text="Yield Stable Dollar Earned"/>
         </StyledCardHeader>
         <StyledCardActions>

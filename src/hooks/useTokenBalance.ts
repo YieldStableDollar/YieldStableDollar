@@ -17,6 +17,7 @@ const useTokenBalance = (token: ERC20) => {
   }, [basisCash, token]);
 
   useEffect(() => {
+    console.info('useEffect in useTokenBalance')
     if (basisCash?.isUnlocked) {
       fetchBalance().catch((err) =>
         console.error(`Failed to fetch token balance: ${err.stack}`),
