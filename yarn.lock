@@ -1859,10 +1859,10 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@heshiswap/sdk@^1.0.0-dev.6":
-  version "1.0.0-dev.6"
-  resolved "https://registry.yarnpkg.com/@heshiswap/sdk/-/sdk-1.0.0-dev.6.tgz#c60c4db6c8cc2b0ce5a83f794cc48c0174bbdb45"
-  integrity sha512-/vvSsBdOz5YzIFgp1jmxtFdG4SnzLRwweDT/5cDFiLprcJv7V2PiAtxhM73X7USK9G/2+bNrQBoChJejwF1e/Q==
+"@heshiswap/sdk@^1.0.0-dev.7":
+  version "1.0.0-dev.7"
+  resolved "https://registry.yarnpkg.com/@heshiswap/sdk/-/sdk-1.0.0-dev.7.tgz#f0e2fc2fcde41595b2bbff9a9b3b18097c52b3c6"
+  integrity sha512-3lNME5tibpSel4aSypx7k4DjSxqJ5XpKNoorUBo19dh97k7ktqDc371wcSa7H0G7ExGi7R6XZWw3gLjAyipR8Q==
   dependencies:
     big.js "^5.2.2"
     decimal.js-light "^2.5.0"
