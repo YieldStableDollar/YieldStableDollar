@@ -20,8 +20,8 @@ const logosBySymbol: {[title: string]: string} = {
   'USDC': USDCLogo,
   'USDT': USDTLogo,
   'BUSD': BUSDLogo,
-  'YSD_BUSD-UNI-LPv2': ysdLogo,
-  'YSS_BUSD-UNI-LPv2': ysdLogo,
+  'YSD_USDT-UNI-LPv2': ysdLogo,
+  'YSS_USDT-UNI-LPv2': ysdLogo,
 };
 
 type BasisLogoProps = {

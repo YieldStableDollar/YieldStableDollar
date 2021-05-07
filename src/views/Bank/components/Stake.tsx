@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import styled from 'styled-components';
 
 import Button from '../../../components/Button';
@@ -61,6 +61,8 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
     />,
   );
 
+  const isLpWithUSDT = useMemo(() => bank.depositTokenName.includes('USDT') && bank.depositTokenName.includes('LP'), [bank])
+
   return (
     <Card>
       <CardContent>
@@ -69,7 +71,7 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
             <CardIcon>
               <TokenSymbol symbol={bank.depositToken.symbol} size={54} />
             </CardIcon>
-            <Value value={getDisplayBalance(stakedBalance, bank.depositToken.decimal)} />
+            <Value value={getDisplayBalance(stakedBalance, bank.depositToken.decimal, isLpWithUSDT ? 12 : 3)} />
             <Label text={`${bank.depositTokenName} Staked`} />
           </StyledCardHeader>
           <StyledCardActions>

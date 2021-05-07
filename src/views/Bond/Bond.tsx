@@ -138,7 +138,7 @@ const Bond: React.FC = () => {
                   fromTokenName="Yield Stable Bond"
                   toToken={basisCash.YSD}
                   toTokenName="Yield Stable Dollar"
-                  priceDesc={`${getDisplayBalance(bondBalance)} YSB Available`}
+                  priceDesc={`${getDisplayBalance(bondBalance, 18, 4)} YSB Available`}
                   onExchange={handleRedeemBonds}
                   disabled={!bondStat || bondBalance.eq(0) || cashIsUnderPriced}
                 />
