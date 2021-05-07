@@ -37,7 +37,7 @@ const Bond: React.FC = () => {
     async (amount: string) => {
       try {
         const tx = await basisCash.buyBonds(amount, cashPrice);
-        const bondAmount = Number(amount) / Number(getDisplayBalance(cashPrice));
+        const bondAmount = Number(amount) / Number(getDisplayBalance(cashPrice, 6));
         addTransaction(tx, {
           summary: `Buy ${bondAmount.toFixed(2)} YSB with ${amount} YSD`,
         });
