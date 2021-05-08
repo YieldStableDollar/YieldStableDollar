@@ -1,6 +1,6 @@
 {
   "Cash": {
-    "address": "0x5566F4Dc47dC0C08bAe674fCb2e26cC7b4E342C7",
+    "address": "0x4E06D710F6595c77aAeeB0B8c35B2E6c8DEEAf8E",
     "abi": [
       {
         "inputs": [],
@@ -454,7 +454,7 @@
     ]
   },
   "Bond": {
-    "address": "0x82f61e7B89E5cD4772392DF554d719981E61cDc9",
+    "address": "0x38903194bc9DaaAFc896C3dD40826a9D16d90b8A",
     "abi": [
       {
         "inputs": [],
@@ -908,7 +908,7 @@
     ]
   },
   "Share": {
-    "address": "0xBFE41fB2a9F527B06Da8be76838Bdabe882fa92A",
+    "address": "0x1588013b6fc6f6a48ab0AD69dBe8435398Ec9a3c",
     "abi": [
       {
         "inputs": [],
@@ -1362,7 +1362,7 @@
     ]
   },
   "Boardroom": {
-    "address": "0xDCEF98bC7EFBD6791b3720464b15E3e23aF1045E",
+    "address": "0x3BdFA11129F32AD61F0eb804eCEBb1a4FC481B61",
     "abi": [
       {
         "inputs": [
@@ -1741,7 +1741,7 @@
     ]
   },
   "Treasury": {
-    "address": "0xDF36ee5ddB807d021DE1Ef59980630215Af9B59e",
+    "address": "0x759457F51C58A116f898b27f92C5Df0AE885a68d",
     "abi": [
       {
         "inputs": [
@@ -2452,7 +2452,7 @@
     ]
   },
   "SeigniorageOracle": {
-    "address": "0xb2B0bb510F348BEDD44Fd7B7A8AE095aecAcA33A",
+    "address": "0x2Cdf4cbf3E16eA8aECEDb5086edE8D524102BE37",
     "abi": [
       {
         "inputs": [
@@ -2888,7 +2888,7 @@
     ]
   },
   "BondOracle": {
-    "address": "0x4251e407d75a51771AC2d91Dee990d2DA68eD94e",
+    "address": "0x79c50E3701AAa53E3EfE04ce2E0fA9772e65f833",
     "abi": [
       {
         "inputs": [
@@ -3324,7 +3324,7 @@
     ]
   },
   "BUSDYSDLPTokenSharePool": {
-    "address": "0xeB6aD1485ED16497082123b6d4213A129B6e16D2",
+    "address": "0x69a7261e0d4f4582bf1622EB1CC82c001c64F8eb",
     "abi": [
       {
         "inputs": [
@@ -3801,7 +3801,7 @@
     ]
   },
   "BUSDYSSLPTokenSharePool": {
-    "address": "0x5ECc9dB489E94a3907FfDC3bC70f33C824af73DE",
+    "address": "0x397D09823C3d113bd9A0908f86Eb8027DFcF5a27",
     "abi": [
       {
         "inputs": [
@@ -4264,7 +4264,7 @@
     ]
   },
   "YSDMultiPool": {
-    "address": "0xAf928f267B2A55766CD060BD114f2ab654dA6390",
+    "address": "0xe79Ea9e8FeE95cac33F2B9c0F64398EAD0344CA4",
     "abi": [
       {
         "inputs": [
